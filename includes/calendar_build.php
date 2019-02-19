@@ -1,5 +1,6 @@
-
 <?php
+
+//TODO: username helyett id alapján legyenek tárolva
 
 $dt = new DateTime;
 if (isset($_GET['year']) && isset($_GET['week'])) {
@@ -73,14 +74,15 @@ for($i=8;$i<16;$i++)//óra
             $k->modify('-1 day');
 
             $classok="";
-            
+            $value="";
             foreach($lefoglaltak as $foglalt)
             {
                 //echo 'k:'.$k.' '
                 //echo $foglalt['nap'].' '.$foglalt['idopont'].'<br>';
-                if($foglalt['nap']==$k->format('Y-m-d') && $foglalt['idopont']==$i)//Elvilega foglalt felülírja a ma-t
+                if($foglalt['nap']==$k->format('Y-m-d') && $foglalt['idopont']==$i)//Elvileg a foglalt felülírja a ma-t
                 {
                     $classok.=" foglalt";
+                    $value=$foglalt['user'];
                 }
                 else
                 {
@@ -88,6 +90,7 @@ for($i=8;$i<16;$i++)//óra
                     {
                         
                         $classok.=" ma";
+                        $value="";
                     }
                     else
                     {
@@ -99,7 +102,15 @@ for($i=8;$i<16;$i++)//óra
             }
             $classok.=" nap";
             //echo '<td class="'.$classok.'">i:'.$i.'k:'.$k->format('Y-m-d').'</td>';
-            echo '<td class="'.$classok.'"></td>';
+            if($_SESSION['adminE']==1)
+            {
+                echo '<td class="'.$classok.'">'.$value.'</td>';
+            }
+            else
+            {
+                echo '<td class="'.$classok.'"></td>';
+            }
+            
             //TODO: Ellenőrzés és színezés | mai nap kiválasztása
             
             //TODO: Csoportos torna alter table szabad helyek más szín
@@ -114,6 +125,7 @@ for($i=8;$i<16;$i++)//óra
 }
 ?>
 </table>
+
 <div class="row">
     <div class="span6">
         <form action= <?php echo 'booking.php?week='.$week.'&year='.$year ?> method="post">
@@ -126,22 +138,23 @@ for($i=8;$i<16;$i++)//óra
             <button type="submit" name="foglal" class="btn btn-primary">Book</button>
         </form>
     </div>
-    <?php 
-    if($_SESSION['adminE']==1)
-    {
-        //Ha admin, akkor törölheti az időpontot
-        echo '<div class="span6">';
+
+    <?php //Ha admin, akkor törölheti az időpontot ?>
         
-        echo '<form action=booking.php?week='.$week.'&year='.$year.' method="post">';
-        echo '   <input type="hidden" name="napp" id="napp" readonly>' ;
-        echo '    <input type="hidden" name="idopontt" id="idopontt" readonly>';
-        echo '    <button type="submit" name="delete" class="btn btn-danger">Delete</button>';
-        echo '</form>
-                </div>';
-    }
+        <div class="span6">
+        <form action=<?php echo 'booking.php?week='.$week.'&year='.$year ?> method="post" >
+        <input type="hidden" name="napp" id="napp" readonly>
+        <input type="hidden" name="idopontt" id="idopontt" readonly>
+        <?php 
+            if($_SESSION['adminE']==1)
+            {
+                echo '<button type="submit" name="delete" class="btn btn-danger">Delete</button>';
+            } 
+        ?>
+        </form>
+        </div>
     
-    ?>
-        
+
     
     <div class="span6">
         <a href="booking.php"><button class="btn btn-success">Frissítés</button></a>

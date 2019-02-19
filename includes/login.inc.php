@@ -13,7 +13,7 @@ if(isset($_POST['login-submit']))
     }
     else
     {
-        $sql="SELECT * FROM bejelentkezo_adatok,adminisztracio_adatok,szemelyes_adatok WHERE bejelentkezo_adatok.userName=? OR bejelentkezo_adatok.userEmail=?;";
+        $sql="SELECT * FROM bejelentkezo_adatok INNER JOIN szemelyes_adatok ON szemelyes_adatok.userId=bejelentkezo_adatok.userId INNER JOIN adminisztracio_adatok ON adminisztracio_adatok.userId=bejelentkezo_adatok.userId WHERE bejelentkezo_adatok.userName=? OR bejelentkezo_adatok.userEmail=?;";
         $stmt=mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt,$sql))
         {
@@ -40,6 +40,8 @@ if(isset($_POST['login-submit']))
                     $_SESSION['userId']=$row['userId'];
                     $_SESSION['userName']=$row['userName'];
                     $_SESSION['adminE']=$row['adminE'];
+                    $_SESSION['knev']=$row['knev'];
+                    $_SESSION['vnev']=$row['vnev'];
 
                     header('Location: ../index.php?login=success');
                     exit();
@@ -50,6 +52,7 @@ if(isset($_POST['login-submit']))
                     exit();
                 }
             }
+            
         }
     }
 }
