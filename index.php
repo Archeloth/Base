@@ -1,6 +1,7 @@
 
-<?php include 'includes/head.php';
-    if(!isset($_GET['search']))
+<?php 
+    include 'includes/head.php';
+    if(!isset($_GET['search-submit']))
     {
 ?>
     <script>

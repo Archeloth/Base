@@ -15,37 +15,30 @@
 </div>
 
 <!-- Categories Widget -->
+<!-- Kategóriák szerint lehet listázni, a linkekre kattintva a kereső funkció indul el-->
 <div class="card my-4">
-  <h5 class="card-header">Categories</h5>
+  <h5 class="card-header">Kategóriák</h5>
   <div class="card-body">
-    <div class="row">
-      <div class="col-lg-6">
+    
         <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#">Web Design</a>
-          </li>
-          <li>
-            <a href="#">HTML</a>
-          </li>
-          <li>
-            <a href="#">Freebies</a>
-          </li>
+        <?php
+        include 'connection.php';
+        $sql="SELECT theme FROM articles GROUP BY theme";
+        $result=mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_assoc($result))
+        {
+          echo '<li>
+                  <a href="index.php?search='.$row['theme'].'&keres-submit=">'.$row['theme'].'</a>
+                </li>';
+        }
+
+        $conn->close();
+        ?>
+          
         </ul>
-      </div>
-      <div class="col-lg-6">
-        <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#">JavaScript</a>
-          </li>
-          <li>
-            <a href="#">CSS</a>
-          </li>
-          <li>
-            <a href="#">Tutorials</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+      
+        
+     
   </div>
 </div>
 

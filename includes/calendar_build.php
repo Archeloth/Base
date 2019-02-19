@@ -185,11 +185,12 @@ for($i=8;$i<16;$i++)//óra
 
 <?php
 //A FORM ÉRTELMEZÉSE
+//Kell ide egy "Ha már létezik ilyen" keresés
     if(isset($_POST['foglal']))
     {
-        $nap=$_POST['nap'];
+        $nap=mysqli_real_escape_string($conn,$_POST['nap']);//Mert f12, dev toolon keresztül még mindig lehet beleírni...
 
-        $idopont=$_POST['idopont'];
+        $idopont=mysqli_real_escape_string($conn,$_POST['idopont']);
         
         $user=$_SESSION['userName'];
 
@@ -197,23 +198,31 @@ for($i=8;$i<16;$i++)//óra
 
         //echo "<br>Hétfő: ".$elso_nap." Varásnap:".$utolso_nap;
 
-        
-       
-        $sql="INSERT INTO idopontok VALUES ('$nap','$idopont','$user',0);";
-
-        if(mysqli_query($conn,$sql))
+        $sql="SELECT * FROM idopontok WHERE nap = '$nap' AND idopont = '$idopont'";
+        $result=mysqli_query($conn,$sql);
+        $queryResult=mysqli_num_rows($result);
+        if($queryResult > 0)
         {
-            //Sikerül
-            echo "Sikeres foglalás!";
+            echo 'Ide nem tudsz foglalni!';
+            //Már létezik
         }
         else
         {
-            //Nem sikerül
-            echo "Hiba a foglaláskor: ".mysqli_error($conn);
-        }
-        //Majd egy header refresh ugyanide
-        
+            $sql="INSERT INTO idopontok VALUES ('$nap','$idopont','$user',0);";
 
+            if(mysqli_query($conn,$sql))
+            {
+                //Sikerül
+                echo "Sikeres foglalás!";
+            }
+            else
+            {
+                //Nem sikerül
+                echo "Hiba a foglaláskor: ".mysqli_error($conn);
+            }
+            //Majd egy header refresh ugyanide
+        }
+       
         $conn->close();
     }
 ?>
