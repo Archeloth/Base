@@ -94,8 +94,7 @@ for($i=8;$i<16;$i++)//óra
                     }
                     else
                     {
-                        
-                        
+
                     }
                     
                 }
@@ -104,7 +103,7 @@ for($i=8;$i<16;$i++)//óra
             //echo '<td class="'.$classok.'">i:'.$i.'k:'.$k->format('Y-m-d').'</td>';
             if($_SESSION['adminE']==1)
             {
-                echo '<td class="'.$classok.'">'.$value.'</td>';
+                echo '<td class="'.$classok.'"><a href="#">'.$value.'</a></td>';
             }
             else
             {

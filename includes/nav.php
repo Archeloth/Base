@@ -37,7 +37,7 @@
                   <a class="nav-link" href="#">Új cikk írása</a>
                 </li>';
                 echo '<li class="nav-item">
-                <a class="nav-link" href="#">Betegek megtekintése</a>
+                <a class="nav-link" href="#">Betegek</a>
               </li>';
             }
 

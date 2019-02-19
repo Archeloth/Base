@@ -1,6 +1,8 @@
 
-<?php include 'includes/head.php' ?>
-
+<?php include 'includes/head.php';
+    if(!isset($_GET['search']))
+    {
+?>
     <script>
         $(document).ready(function(){
 
@@ -40,7 +42,10 @@
             });
         });
     </script>
+    <?php
+    }
 
+    ?>
     <title>E-Kisokos LogInSystem</title>
 </head>
 <body>

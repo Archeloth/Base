@@ -10,9 +10,12 @@
       <small>mindenkinek...</small>
     </h1>
 
-    <!-- Blog Post -->
-
-    <!--php intézi-->
+  <?php 
+    if(isset($_GET['search']))
+    {
+      include 'includes/search.php';
+    }
+  ?>
     
   </div>
 

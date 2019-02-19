@@ -5,12 +5,12 @@
 <div class="card my-4">
   <h5 class="card-header">Keresés</h5>
   <div class="card-body">
+  <form action="index.php" method="GET">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="...">
-      <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">Keres</button>
-      </span>
+      <input type="text" name="search" class="form-control" placeholder="...">
+      <button type="submit" class="btn btn-primary" name="keres-submit">Keres</button>
     </div>
+  </form>
   </div>
 </div>
 

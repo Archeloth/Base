@@ -1,4 +1,6 @@
 <?php
+session_start();
+
     if(isset($_GET['offset']) && isset($_GET['limit']))
     {
         $limit=$_GET['limit'];
@@ -19,7 +21,14 @@
           echo '<div class="card-footer text-muted">';
           echo 'Posted on '.$row['created'];
           //If admin
-          echo '<a href="modify_article.php?id='.$row['article_id'].'">Módosítás</a>';
+          if(isset($_SESSION['userId']))
+          {
+            if($_SESSION['adminE']==1)
+            {
+              echo '<a href="modify_article.php?id='.$row['article_id'].'">Módosítás</a>';
+            }
+          }
+          
           echo '</div>
           </div>';
            
