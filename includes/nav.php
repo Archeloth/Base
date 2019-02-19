@@ -36,15 +36,26 @@
               echo '<li class="nav-item">
                   <a class="nav-link" href="#">Új cikk írása</a>
                 </li>';
+                echo '<li class="nav-item">
+                <a class="nav-link" href="#">Betegek megtekintése</a>
+              </li>';
             }
 
             echo '<li class="nav-item">
-                  <a class="nav-link" href="#">Időpont foglalás</a>
+                  <a class="nav-link" href="booking.php">Időpont foglalás</a>
                 </li>';
 
-            echo '<li class="nav-item">
-                <a class="nav-link" href="personal.php">Saját adatok</a>
-              </li>';
+            echo '<div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              '.$_SESSION["userName"].'
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Profilom</a>
+              <a class="dropdown-item" href="#">Időpontjaim</a>
+              <a class="dropdown-item" href="#">Beállítások</a>
+            </div>
+          </div>';
 
 
             echo '<li class="nav-item">

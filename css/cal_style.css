@@ -1,0 +1,24 @@
+.ma{
+    background-color: lightblue;
+}
+
+.foglalt{
+    background-color: red;
+}
+.nap{
+    height: 60px;
+    width: 120px;
+}
+.nap:hover{
+    background-color: yellowgreen;
+}
+table, td{
+    border: 1px solid lightgray;
+    text-align:center;
+    vertical-align:middle;
+    font-family:'Arial', 'Halvetica';
+    font-weight:bold;
+}
+th{
+    background-color: rgb(192, 192, 192);
+}

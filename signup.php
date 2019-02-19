@@ -5,7 +5,7 @@
         if($signup=="success")
         {
             echo '<p>Sikeres regisztráció!</p>';
-            //header('Refresh: 1, url=index.php');
+            header('Refresh: 1, url=index.php');
         }
     }
 ?>
