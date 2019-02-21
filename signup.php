@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <title>Regisztráció</title>
 </head>
@@ -90,6 +91,9 @@
                 </label>
             </div>
             -->
+
+            <div class="g-recaptcha" data-sitekey="6Ldt7pIUAAAAANKJPDuwjmpujXwqAdaXNtNe0TG1"></div>
+
             <button type="submit" class="btn btn-success form-control" name="signup-submit">Regisztrálás</button>
         </form>
         <a href="index.php">Vissza a főoldalra</a>

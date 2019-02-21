@@ -36,6 +36,23 @@ if(isset($_POST['signup-submit']))
     $nem=$_POST['nem'];
     $szuletesdatum=$_POST['szuletesdatum'];
     $lakcim=$_POST['lakcim'];
+    //Captcha cuccok
+    //https://www.google.com/recaptcha/admin/site/345173613/setup
+    //Lehetne IP-t is továbbküldeni, de azt inkább nem...
+    $secterKey="6Ldt7pIUAAAAAIs9xTduD9pFe4BK4ph4aP3rcZQ1";
+    $responseKey=$_POST['g-recaptcha-response'];
+    $url="https://www.google.com/recaptcha/api/siteverify?secret=$secterKey&response=$responseKey";
+    $response=file_get_contents($url);
+    $response=json_decode($response);
+    if($response->success)
+    {
+        //Siker
+    }
+    else
+    {
+        //ROBOT!!4
+    }
+
     //$adminE=$_POST['admin'];
 
     if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($knev) || empty($vnev) || empty($telefonszam))
