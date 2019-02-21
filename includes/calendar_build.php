@@ -88,7 +88,6 @@ for($i=8;$i<16;$i++)//óra
                 {
                     if($j==$current_day && $week==$current_week)//Mert amúgy kiszinezné az összes X-edik napot
                     {
-                        
                         $classok.=" ma";
                         $value="";
                     }

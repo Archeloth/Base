@@ -46,100 +46,103 @@ if(isset($_POST['signup-submit']))
     $response=json_decode($response);
     if($response->success)
     {
-        //Siker
-    }
-    else
-    {
-        //ROBOT!!4
-    }
+        
+    
 
-    //$adminE=$_POST['admin'];
+        //$adminE=$_POST['admin'];
 
-    if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($knev) || empty($vnev) || empty($telefonszam))
-    {
-        header('Location: ../signup.php?error=emptyfields&user='.$username.'&mail='.$email);
-        exit();
-    }
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username))
-    {
-        header('Location: ../signup.php?error=invalidmail');
-        exit();
-    }
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-    {
-        header('Location: ../signup.php?error=invalidmail&user='.$username);
-        exit();
-    }
-    else if(!preg_match("/^[a-zA-Z0-9]*$/", $username))
-    {
-        header('Location: ../signup.php?error=invaliduser&mail='.$email);
-        exit();
-    }
-    else if($password !== $passwordRepeat)
-    {
-        header('Location: ../signup.php?error=passwordcheck&user='.$username.'&mail='.$email);
-        exit();
-    }
-    else
-    {
-        $sql="SELECT userId FROM bejelentkezo_adatok WHERE userId=?";
-        $stmt=mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt,$sql))
+        if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($knev) || empty($vnev) || empty($telefonszam))
         {
-            header('Location: ../signup.php?error=sqlerror');
+            header('Location: ../signup.php?error=emptyfields&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if(!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username))
+        {
+            header('Location: ../signup.php?error=invalidmail');
+            exit();
+        }
+        else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            header('Location: ../signup.php?error=invalidmail&user='.$username);
+            exit();
+        }
+        else if(!preg_match("/^[a-zA-Z0-9]*$/", $username))
+        {
+            header('Location: ../signup.php?error=invaliduser&mail='.$email);
+            exit();
+        }
+        else if($password !== $passwordRepeat)
+        {
+            header('Location: ../signup.php?error=passwordcheck&user='.$username.'&mail='.$email);
             exit();
         }
         else
         {
-            mysqli_stmt_bind_param($stmt, "s", $username);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            $resultCheck=mysqli_stmt_num_rows($stmt);
-            if($resultCheck > 0)
+            $sql="SELECT userId FROM bejelentkezo_adatok WHERE userId=?";
+            $stmt=mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($stmt,$sql))
             {
-                header('Location: ../signup.php?error=usertaken&mail='.$email);
+                header('Location: ../signup.php?error=sqlerror');
                 exit();
             }
             else
             {
-                $sql="INSERT INTO bejelentkezo_adatok VALUES (?,?,?,?);";
-                $sql2="INSERT INTO szemelyes_adatok VALUES (?,?,?,?,?,?,?);";
-                $sql3="INSERT INTO adminisztracio_adatok (userId,adminE,aktivE,betegE) VALUES (?,?,?,?);";
-                $stmt=mysqli_stmt_init($conn);
-                $stmt2=mysqli_stmt_init($conn);
-                $stmt3=mysqli_stmt_init($conn);
-                if(!mysqli_stmt_prepare($stmt,$sql))//|| !mysqli_stmt_prepare($stmt2,$sql2) || !mysqli_stmt_prepare($stmt3,$sql3)
+                mysqli_stmt_bind_param($stmt, "s", $username);
+                mysqli_stmt_execute($stmt);
+                mysqli_stmt_store_result($stmt);
+                $resultCheck=mysqli_stmt_num_rows($stmt);
+                if($resultCheck > 0)
                 {
-                    header('Location: ../signup.php?error=sqlerror');
+                    header('Location: ../signup.php?error=usertaken&mail='.$email);
                     exit();
                 }
                 else
                 {
-                    mysqli_stmt_prepare($stmt2,$sql2);
-                    mysqli_stmt_prepare($stmt3,$sql3);
-                    $hashedPwd=password_hash($password, PASSWORD_DEFAULT);
+                    $sql="INSERT INTO bejelentkezo_adatok VALUES (?,?,?,?);";
+                    $sql2="INSERT INTO szemelyes_adatok VALUES (?,?,?,?,?,?,?);";
+                    $sql3="INSERT INTO adminisztracio_adatok (userId,adminE,aktivE,betegE) VALUES (?,?,?,?);";
+                    $stmt=mysqli_stmt_init($conn);
+                    $stmt2=mysqli_stmt_init($conn);
+                    $stmt3=mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt,$sql))//|| !mysqli_stmt_prepare($stmt2,$sql2) || !mysqli_stmt_prepare($stmt3,$sql3)
+                    {
+                        header('Location: ../signup.php?error=sqlerror');
+                        exit();
+                    }
+                    else
+                    {
+                        mysqli_stmt_prepare($stmt2,$sql2);
+                        mysqli_stmt_prepare($stmt3,$sql3);
+                        $hashedPwd=password_hash($password, PASSWORD_DEFAULT);
 
-                    $uuid=gen_uuid();
-                    $adminE=0;
-                    $aktivE=1;
-                    $betegE=1;
-                    mysqli_stmt_bind_param($stmt,"ssss",$uuid,$username,$email,$hashedPwd);
-                    mysqli_stmt_bind_param($stmt2,"sssisss",$uuid,$knev,$vnev,$nem,$telefonszam,$szuletesdatum,$lakcim);
-                    mysqli_stmt_bind_param($stmt3,"ssss",$uuid,$adminE,$aktivE,$betegE);
+                        $uuid=gen_uuid();
+                        $adminE=0;
+                        $aktivE=1;
+                        $betegE=1;
+                        mysqli_stmt_bind_param($stmt,"ssss",$uuid,$username,$email,$hashedPwd);
+                        mysqli_stmt_bind_param($stmt2,"sssisss",$uuid,$knev,$vnev,$nem,$telefonszam,$szuletesdatum,$lakcim);
+                        mysqli_stmt_bind_param($stmt3,"ssss",$uuid,$adminE,$aktivE,$betegE);
 
-                    mysqli_stmt_execute($stmt);
-                    mysqli_stmt_execute($stmt2);
-                    mysqli_stmt_execute($stmt3);
-                    header('Location: ../signup.php?signup=success');
-                    exit();
+                        mysqli_stmt_execute($stmt);
+                        mysqli_stmt_execute($stmt2);
+                        mysqli_stmt_execute($stmt3);
+                        header('Location: ../signup.php?signup=success');
+                        exit();
+                    }
                 }
             }
         }
+        mysqli_stmt_close($stmt);
+        mysqli_stmt_close($stmt2);
+        mysqli_stmt_close($stmt3);
+        mysqli_close($conn);
     }
-    mysqli_stmt_close($stmt);
-    mysqli_stmt_close($stmt2);
-    mysqli_stmt_close($stmt3);
-    mysqli_close($conn);
+    else
+    {
+        //ROBOT!!4
+        header('Location: ../signup.php?error=recaptchaerror');
+        exit();
+    }
 }
 else
 {
