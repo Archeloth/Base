@@ -28,13 +28,12 @@ session_start();
               echo '<form action="modify_article.php" method="get">
               <input type="hidden" name="id" value='.$row['article_id'].'>
               <button type="submit" class="btn btn-success">Módosítás</button>
-                </form>';
+              </form>';
             }
           }
           
           echo '</div>
           </div>';
-           
         }
         $conn->close();
     }

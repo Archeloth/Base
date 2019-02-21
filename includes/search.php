@@ -20,7 +20,7 @@ if(isset($_GET['search']))
             echo '<div class="card-footer text-muted">';
             echo 'Posted on '.$row['created'];
             //If admin
-            if($_SESSION['adminE']==1)
+            if(isset($_SESSION['adminE']) && $_SESSION['adminE']==1)
             {
                 echo '<form action="modify_article.php" method="get">
               <input type="hidden" name="id" value='.$row['article_id'].'>
