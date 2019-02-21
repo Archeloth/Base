@@ -124,7 +124,7 @@ for($i=8;$i<16;$i++)//óra
 }
 ?>
 </table>
-
+<!--Formok-->
 <div class="row">
     <div class="span6">
         <form action= <?php echo 'booking.php?week='.$week.'&year='.$year ?> method="post">

@@ -20,7 +20,7 @@
         {
             while($row=mysqli_fetch_array($image_links))
             {
-                echo '<img src="../images/'.$row['kepnev'].'" width="100" height="100">';
+                echo '<img src="images/'.$row['kepnev'].'" width="100" height="100">';
                 echo '<a href="image_delete.php?name='.$row['kepnev'].'&id='.$id.'">Törlés</a>';//Kép törlése
                 $links.='&lt;img src="images/'.$row['kepnev'].'"&gt<br>';
                 

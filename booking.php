@@ -8,9 +8,15 @@ include 'includes/head.php';
 <body>
     <?php include 'includes/nav.php'; ?>
     <div class="container">
-        <div class="col-sm-10">
-            <?php include 'includes/calendar_build.php'; ?>
+        <div class="row">
+            <div class="col-sm-10">
+                <?php include 'includes/calendar_build.php'; ?>
+            </div>
+            <div class="col-sm-2">
+            Megjegyzések, illetve használati útmutató
+            </div>
         </div>
+
     </div>
     <?php include 'includes/footer.php'; ?>
 </body>

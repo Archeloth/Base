@@ -1,20 +1,21 @@
 <?php 
-include "head.php"; //A head már tartalmazza a session_start-ot
+include "includes/head.php"; //A head már tartalmazza a session_start-ot
 if($_SESSION['adminE']==1)
 {
+    include 'includes/nav.php';
 ?>
     <title>Módosítás</title>
     </head>
     <body>
     <div class="container">
-        <div class="offset-sm-2 col-sm-8">
+        <div class="offset-sm-1 col-sm-10">
             <h3>Itt tudod módosítani az adott cikket</h3>
-            <form action="update_article.php" method="post">
+            <form action="includes/update_article.php" method="post">
                 <?php
                     if(isset($_GET['id']))//És a SESSION jogköre megengedi
                     {
                         $id=$_GET['id'];
-                        include_once "connection.php";
+                        include_once "includes/connection.php";
                         //Load in the data
                         $sql="SELECT * FROM articles WHERE article_id='$id'";
                         $data=mysqli_query($conn,$sql);
@@ -25,11 +26,11 @@ if($_SESSION['adminE']==1)
                         if($row=mysqli_fetch_array($data))
                         {
                             echo '<label for="title">Cím: </label>';
-                            echo '<input type="text" name="title" id="" value="'.$row['title'].'"><br><br>';
+                            echo '<input type="text" name="title" class="form-control" value="'.$row['title'].'">';
                             echo '<label for="theme">Téma: </label>';
-                            echo '<input type="text" name="theme" id="" value="'.$row['theme'].'"><br><br>';
+                            echo '<input type="text" name="theme" class="form-control" value="'.$row['theme'].'">';
                             echo '<label for="content">Szöveg: </label>';
-                            echo '<textarea name="content" id="" cols="100" rows="20">'.$row['content'].'</textarea><br><br>';
+                            echo '<textarea name="content" class="form-control" cols="100" rows="20">'.$row['content'].'</textarea>';
                             echo '<input type="hidden" name="id" value="'.$id.'">';
                         }
 
@@ -44,19 +45,19 @@ if($_SESSION['adminE']==1)
             <?php 
             //Jelenítse meg a feltöltött képek "linkjeit" amiket be lehet ágyazni a html-be, mellette pedig egy törlés gomb
             
-            include_once "select_images.php";
+            include_once "includes/select_images.php";
             
             echo '
                 <hr>
                 <p><b>Kép feltöltés:</b></p>
-                <form action="upload_image.php?id='.$id.'" method="post" enctype="multipart/form-data">
+                <form action="includes/upload_image.php?id='.$id.'" method="post" enctype="multipart/form-data">
                     <label for="image">Válassz egy fájlt:</label>
-                    <input type="file" name="file" id="" required><br>
-                    <button type="submit" name="submit">Feltölt</button>
+                    <input type="file" name="file" class="form-control-file" required><br>
+                    <button type="submit" name="submit" class="btn btn-success">Feltölt</button>
                 </form>
                 <hr>';
-            echo '<a href="delete_article.php?id='.$id.'"><button>Törlés</button></a>';
-            echo '<a href="../index.php">Vissza a kezdőlapra</a>';
+            echo '<a href="delete_article.php?id='.$id.'"><button class="btn btn-danger">Törlés</button></a><hr>';
+            echo '<a href="index.php">Vissza a kezdőlapra</a>';
             ?>
         </div>
     </div>
@@ -66,6 +67,7 @@ if($_SESSION['adminE']==1)
     </html>
 
 <?php 
+include 'includes/footer.php';
 }
 else
 {
