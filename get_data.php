@@ -25,7 +25,7 @@ session_start();
           {
             if($_SESSION['adminE']==1)
             {
-              echo '<a href="modify_article.php?id='.$row['article_id'].'">Módosítás</a>';
+              echo '<a href="includes/modify_article.php?id='.$row['article_id'].'">Módosítás</a>';
             }
           }
           

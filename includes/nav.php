@@ -34,7 +34,7 @@
             if($_SESSION['adminE']==true)
             {
               echo '<li class="nav-item">
-                  <a class="nav-link" href="#">Új cikk írása</a>
+                  <a class="nav-link" href="new_article.php">Új cikk írása</a>
                 </li>';
                 echo '<li class="nav-item">
                 <a class="nav-link" href="#">Betegek</a>
