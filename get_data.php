@@ -25,7 +25,10 @@ session_start();
           {
             if($_SESSION['adminE']==1)
             {
-              echo '<a href="includes/modify_article.php?id='.$row['article_id'].'">Módosítás</a>';
+              echo '<form action="includes/modify_article.php" method="get">
+              <input type="hidden" name="id" value='.$row['article_id'].'>
+              <button type="submit" class="btn btn-success">Módosítás</button>
+                </form>';
             }
           }
           
@@ -36,3 +39,4 @@ session_start();
         $conn->close();
     }
     ?>
+    
