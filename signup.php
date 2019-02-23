@@ -29,13 +29,13 @@
             <div class="form-group row">
                 <label for="username" class="col-sm-2 col-form-label">*Felhasználónév:</label>
                 <div class="col-sm-10">
-                    <input type="text" name="username" class="form-control">
+                    <input type="text" name="username" class="form-control" id="username">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">*E-mail cím:</label>
                 <div class="col-sm-10">
-                    <input type="email" name="email" class="form-control" placeholder="@">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="@">
                 </div>
             </div>
             <div class="form-group row">
@@ -71,7 +71,8 @@
             <div class="form-group row">
                 <label for="telefonszam" class="col-sm-2 col-form-label">*Telefonszám:</label>
                 <div class="col-sm-10">
-                    <input type="text" name="telefonszam" class="form-control" placeholder="Telefonszám">
+                    <!--type="tel" pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" --- Csak Safariban működik elvileg-->
+                    <input type="text" pattern="[0-9]{9}" name="telefonszam" class="form-control" placeholder="Telefonszám">
                 </div>
             </div>
             <div class="form-group row">

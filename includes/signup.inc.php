@@ -72,6 +72,11 @@ if(isset($_POST['signup-submit']))
             header('Location: ../signup.php?error=passwordcheck&user='.$username.'&mail='.$email);
             exit();
         }
+        else if(!preg_match("/^[1-9][0-9]{0,8}$/",$telefonszam))
+        {
+            header('Location: ../signup.php?error=wrongtelephone&user='.$username.'&mail='.$email);
+            exit();
+        }
         else
         {
             $sql="SELECT userId FROM bejelentkezo_adatok WHERE userId=?";

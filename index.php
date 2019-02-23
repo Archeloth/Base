@@ -1,4 +1,3 @@
-
 <?php 
     include 'includes/head.php';
     if(!isset($_GET['search-submit']) && !isset($_GET['search']))
