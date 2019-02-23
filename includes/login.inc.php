@@ -8,7 +8,7 @@ if(isset($_POST['login-submit']))
 
     if(empty($userOrEmail) || empty($password))
     {
-        header('Location: ../index.php?error=emptyfields');
+        header('Location: ../login.php?error=emptyfields');
         exit();
     }
     else
@@ -17,7 +17,7 @@ if(isset($_POST['login-submit']))
         $stmt=mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt,$sql))
         {
-            header('Location: ../index.php?error=sqlerror');
+            header('Location: ../login.php?error=sqlerror');
             exit();
         }
         else
@@ -30,7 +30,7 @@ if(isset($_POST['login-submit']))
                 $pwdCheck=password_verify($password, $row['userPwd']);
                 if($pwdCheck == false)
                 {
-                    header('Location: ../index.php?error=wrongpassword');
+                    header('Location: ../login.php?error=wrongpassword');
                     exit();
                 }
                 else if($pwdCheck == true)
@@ -48,7 +48,7 @@ if(isset($_POST['login-submit']))
                 }
                 else
                 {
-                    header('Location: ../index.php?error=wrongpassword');
+                    header('Location: ../login.php?error=wrongpassword');
                     exit();
                 }
             }

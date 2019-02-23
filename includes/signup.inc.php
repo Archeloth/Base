@@ -46,10 +46,6 @@ if(isset($_POST['signup-submit']))
     $response=json_decode($response);
     if($response->success)
     {
-        
-    
-
-        //$adminE=$_POST['admin'];
 
         if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($knev) || empty($vnev) || empty($telefonszam))
         {

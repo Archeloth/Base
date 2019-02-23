@@ -1,4 +1,7 @@
-<?php include "includes/head.php"; ?>
+<?php
+include 'includes/nav.php';
+include 'includes/login.error.check.php';
+include "includes/head.php"; ?>
 
     <title>Bejelentkezés</title>
 </head>

@@ -10,7 +10,7 @@
 <div class="container">
     <div class="offset-sm-1 col-sm-10">
         <h3>Új cikk felvétele</h3>
-        <form action="insert_new.php" method="post">
+        <form action="includes/insert_new.php" method="post">
             <label for="theme">Téma: </label>
             <input type="text" class="form-control" name="theme" id="">
 
@@ -20,7 +20,7 @@
             <label for="content">Szöveg: </label>
             <textarea name="content" id="" cols="100" rows="20" class="form-control"></textarea><br>
 
-            <button type="submit" name="ok" class="btn btn-success">Elfogad</button>
+            <button type="submit" name="submit-new" class="btn btn-success">Elfogad</button>
             <button type="reset" class="btn btn-warning">Visszaállít</button>
         </form>
         <?php //EZ még kérdéses, hogy hogyan kapcsoljam össze a még nem létező cikkel a képet... include_once "upload_image_form.php" image_upload()?>

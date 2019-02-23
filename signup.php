@@ -4,23 +4,25 @@
         $signup=$_GET['signup'];
         if($signup=="success")
         {
-            echo '<p>Sikeres regisztráció!</p>';
+            echo '<div class="alert alert-success fade show">
+                    <strong>Sikeres regisztrálás.</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
             header('Refresh: 1, url=index.php');
         }
     }
+    include 'includes/signup.error.check.php';
+    include 'includes/head.php';
 ?>
-<!DOCTYPE html>
-<html lang="hu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <title>Regisztráció</title>
 </head>
 <body>
+<?php include 'includes/nav.php'; ?>
     <div class="offset-sm-2 col-sm-8">
     <p>A csillaggal jelölt mezők kitöltése kötelező!</p>
         <form action="includes/signup.inc.php" method="post">
