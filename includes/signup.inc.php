@@ -93,6 +93,7 @@ if(isset($_POST['signup-submit']))
                 $resultCheck=mysqli_stmt_num_rows($stmt);
                 if($resultCheck > 0)
                 {
+                    //Már létezik
                     header('Location: ../signup.php?error=usertaken&mail='.$email);
                     exit();
                 }

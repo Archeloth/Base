@@ -19,10 +19,12 @@ session_start();
           echo '<p class="card-text">'.$row['content'].'</p>';
           echo '</div>';
           echo '<div class="card-footer text-muted">';
-          echo 'Posted on '.$row['created'];
-          //If admin
+          echo 'Létrehozva '.$row['created'];
+          //Ha be van jelentkezve
           if(isset($_SESSION['userId']))
           {
+            echo '<a href="comments.php?article='.$row['article_id'].'" class="float-right">Kommentek</a>';
+            //Ha admin van bejelentkezve
             if($_SESSION['adminE']==1)
             {
               echo '<form action="modify_article.php" method="get">
@@ -31,6 +33,7 @@ session_start();
               </form>';
             }
           }
+
           
           echo '</div>
           </div>';
@@ -38,4 +41,5 @@ session_start();
         $conn->close();
     }
     ?>
+
     
