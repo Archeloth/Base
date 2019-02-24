@@ -28,6 +28,14 @@ if(isset($_GET['error']))
                     </button>
                 </div>';
             break;
+        case "nouser":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>Nem létezik ilyen felhasználó!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
         default:
             break;
     }

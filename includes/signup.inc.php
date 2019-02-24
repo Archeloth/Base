@@ -36,6 +36,8 @@ if(isset($_POST['signup-submit']))
     $nem=$_POST['nem'];
     $szuletesdatum=$_POST['szuletesdatum'];
     $lakcim=$_POST['lakcim'];
+    $biztkerd=$_POST['biztkerdes'];
+    $biztval=$_POST['biztvalasz'];
     //Captcha cuccok
     //https://www.google.com/recaptcha/admin/site/345173613/setup
     //Lehetne IP-t is továbbküldeni, de azt inkább nem...
@@ -47,7 +49,7 @@ if(isset($_POST['signup-submit']))
     if($response->success)
     {
 
-        if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($knev) || empty($vnev) || empty($telefonszam))
+        if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat) || empty($knev) || empty($vnev) || empty($telefonszam) || empty($biztval))
         {
             header('Location: ../signup.php?error=emptyfields&user='.$username.'&mail='.$email);
             exit();
@@ -102,7 +104,7 @@ if(isset($_POST['signup-submit']))
                 {
                     $sql="INSERT INTO bejelentkezo_adatok VALUES (?,?,?,?);";
                     $sql2="INSERT INTO szemelyes_adatok VALUES (?,?,?,?,?,?,?);";
-                    $sql3="INSERT INTO adminisztracio_adatok (userId,adminE,aktivE,betegE) VALUES (?,?,?,?);";
+                    $sql3="INSERT INTO adminisztracio_adatok (userId,adminE,aktivE,betegE,biztKerdes,biztValasz) VALUES (?,?,?,?,?,?);";
                     $stmt=mysqli_stmt_init($conn);
                     $stmt2=mysqli_stmt_init($conn);
                     $stmt3=mysqli_stmt_init($conn);
@@ -117,13 +119,16 @@ if(isset($_POST['signup-submit']))
                         mysqli_stmt_prepare($stmt3,$sql3);
                         $hashedPwd=password_hash($password, PASSWORD_DEFAULT);
 
+                        $hashedBiztVal=password_hash($biztval,PASSWORD_DEFAULT);
+                        //PASSWORD_DEFAULT - Use the bcrypt algorithm (default as of PHP 5.5.0). Note that this constant is designed to change over time as new and stronger algorithms are added to PHP. For that reason, the length of the result from using this identifier can change over time. Therefore, it is recommended to store the result in a database column that can expand beyond 60 characters (255 characters would be a good choice).
+
                         $uuid=gen_uuid();
                         $adminE=0;
                         $aktivE=1;
                         $betegE=1;
                         mysqli_stmt_bind_param($stmt,"ssss",$uuid,$username,$email,$hashedPwd);
                         mysqli_stmt_bind_param($stmt2,"sssisss",$uuid,$knev,$vnev,$nem,$telefonszam,$szuletesdatum,$lakcim);
-                        mysqli_stmt_bind_param($stmt3,"ssss",$uuid,$adminE,$aktivE,$betegE);
+                        mysqli_stmt_bind_param($stmt3,"ssssss",$uuid,$adminE,$aktivE,$betegE,$biztkerd,$hashedBiztVal);
 
                         mysqli_stmt_execute($stmt);
                         mysqli_stmt_execute($stmt2);

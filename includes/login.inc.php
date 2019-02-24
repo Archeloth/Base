@@ -25,34 +25,43 @@ if(isset($_POST['login-submit']))
             mysqli_stmt_bind_param($stmt,"ss",$userOrEmail,$userOrEmail);
             mysqli_stmt_execute($stmt);
             $result=mysqli_stmt_get_result($stmt);
-            if($row=mysqli_fetch_assoc($result))
+            $num_rows=mysqli_num_rows($result);
+            if($num_rows==1)
             {
-                $pwdCheck=password_verify($password, $row['userPwd']);
-                if($pwdCheck == false)
+                if($row=mysqli_fetch_assoc($result))
                 {
-                    header('Location: ../login.php?error=wrongpassword');
-                    exit();
-                }
-                else if($pwdCheck == true)
-                {
-
-                    session_start();
-                    $_SESSION['userId']=$row['userId'];
-                    $_SESSION['userName']=$row['userName'];
-                    $_SESSION['adminE']=$row['adminE'];
-                    $_SESSION['knev']=$row['knev'];
-                    $_SESSION['vnev']=$row['vnev'];
-
-                    header('Location: ../index.php?login=success');
-                    exit();
-                }
-                else
-                {
-                    header('Location: ../login.php?error=wrongpassword');
-                    exit();
+                    $pwdCheck=password_verify($password, $row['userPwd']);
+                    if($pwdCheck == false)
+                    {
+                        header('Location: ../login.php?error=wrongpassword');
+                        exit();
+                    }
+                    else if($pwdCheck == true)
+                    {
+    
+                        session_start();
+                        $_SESSION['userId']=$row['userId'];
+                        $_SESSION['userName']=$row['userName'];
+                        $_SESSION['adminE']=$row['adminE'];
+                        $_SESSION['knev']=$row['knev'];
+                        $_SESSION['vnev']=$row['vnev'];
+                        $_SESSION['betegE']=$row['betegE'];
+    
+                        header('Location: ../index.php?login=success');
+                        exit();
+                    }
+                    else
+                    {
+                        header('Location: ../login.php?error=wrongpassword');
+                        exit();
+                    }
                 }
             }
-            
+            else
+            {
+                header('Location: ../login.php?error=nouser');
+                exit();
+            }
         }
     }
 }

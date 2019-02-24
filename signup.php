@@ -94,8 +94,31 @@
                 </label>
             </div>
             -->
+            <p>Biztonsági kérdés kiválasztása a jövőbeli jelszó módosításhoz és azonosításhoz.</p>
+            <div class="form-group row">
+                <label for="biztkerdes" class="col-sm-2 col-form-label">*Kérdés:</label>
+                <div class="col-sm-10">
+                    <select name="biztkerdes" class="form-control">
+                        <option value="Mi_volt_a_gyermekkori_beceneved?">Mi volt a gyermekkori beceneved?</option>
+                        <option value="Mi_a_neve_a_legjobb_baratodnak?">Mi a neve a legjobb barátodnak?</option>
+                        <option value="Mi_volt_az_altalanos_iskolad_neve?">Mi volt az általános iskolád neve?</option>
+                        <option value="Melyik_honapban_van_a_testvered_szuletesnapja?">Melyik hónapban van a testvéred születésnapja?</option>
+                        <option value="Melyik_varosban_dolgoztal_eloszor?">Melyik városban dolgoztál először?</option>
+                        <option value="Mi_volt_az_elso_haziallatod_neve?">Mi volt az első háziállatod neve?</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="biztvalasz" class="col-sm-2 col-form-label">*Válasz:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="biztvalasz" class="form-control" placeholder="...">
+                </div>
+            </div>
 
-            <div class="g-recaptcha" data-sitekey="6Ldt7pIUAAAAANKJPDuwjmpujXwqAdaXNtNe0TG1"></div>
+            <div class="offset-sm-3 col-sm-6">
+                <div class="g-recaptcha" data-sitekey="6Ldt7pIUAAAAANKJPDuwjmpujXwqAdaXNtNe0TG1"></div>
+            </div>
+            
 
             <button type="submit" class="btn btn-success form-control" name="signup-submit">Regisztrálás</button>
         </form>

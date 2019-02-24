@@ -15,7 +15,14 @@ include "includes/head.php"; ?>
         <label for="remember">Emlékezzen rám. </label><input type="checkbox" name="remeber" value="1"><!--Value 1-et kell keresni ha be van pipálva-->
         <button type="submit" class="btn btn-success" name="login-submit">Belépés</button>
         </form>
-        <a href="index.php">Vissza a főoldalra</a>
+        <div class="row">
+            <div class="col">
+                <a href="index.php">Vissza a főoldalra</a>
+            </div>
+            <div class="col">
+                <!--<a href="forgot_pwd.php">Elfelejtette jelszavát?</a>-->
+            </div>
+        </div>
     </div>
 </div>
     
