@@ -19,6 +19,11 @@ if(isset($_GET['search']))
             echo '</div>';
             echo '<div class="card-footer text-muted">';
             echo 'Posted on '.$row['created'];
+            //Ha be van jelentkezve
+            if(isset($_SESSION['userId']))
+            {
+                echo '<a href="comments.php?article='.$row['article_id'].'" class="float-right">Kommentek</a>';
+            }
             //If admin
             if(isset($_SESSION['adminE']) && $_SESSION['adminE']==1)
             {
