@@ -81,24 +81,22 @@ for($i=8;$i<16;$i++)//óra
                 //echo $foglalt['nap'].' '.$foglalt['idopont'].'<br>';
                 if($foglalt['nap']==$k->format('Y-m-d') && $foglalt['idopont']==$i)//Elvileg a foglalt felülírja a ma-t
                 {
-                    $classok.=" foglalt";
+                    $classok.="foglalt ";
                     $value=$foglalt['user'];
                 }
                 else
                 {
                     if($j==$current_day && $week==$current_week)//Mert amúgy kiszinezné az összes X-edik napot
                     {
-                        $classok.=" ma";
+                        if (strpos($classok, 'ma') === false)//Tehát benne van, mert amúgy 5-6-szor bele tenné
+                        {
+                            $classok.="ma ";
+                        }
                         $value="";
                     }
-                    else
-                    {
-
-                    }
-                    
                 }
             }
-            $classok.=" nap";
+            $classok.="nap ";
             //echo '<td class="'.$classok.'">i:'.$i.'k:'.$k->format('Y-m-d').'</td>';
             if($_SESSION['adminE']==1)
             {

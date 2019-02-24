@@ -1,5 +1,6 @@
 .ma{
-    background-color: rgba(rgb(74, 255, 210), 0.5);
+    /*background-color: rgba(rgb(74, 255, 210), 0.5);*/
+    background-color: lightblue;
 }
 
 .foglalt{
@@ -13,7 +14,7 @@
     background-color: yellowgreen;
 }
 table, td{
-    border: 1px solid lightgray;
+    border: 1px solid rgb(88, 88, 88);
     text-align:center;
     vertical-align:middle;
     font-family:'Arial', 'Halvetica';
