@@ -22,7 +22,7 @@ include 'includes/head.php';
                 <?php //Listázni, +törlés mező 
                 require 'includes/connection.php';
                 $user=$_SESSION['userId'];
-                $sql="SELECT * FROM tornazok INNER JOIN tornak ON tornazok.tornaId = tornak.tornaId WHERE tornazok.userId='$user' AND tornazok.nap >= CURDATE();";
+                $sql="SELECT * FROM tornazok INNER JOIN tornak ON tornazok.tornaId = tornak.tornaId WHERE tornazok.userId='$user' AND tornazok.nap >= CURDATE() ORDER BY tornazok.nap ASC";
                 $query=mysqli_query($conn,$sql);
                 if(mysqli_num_rows($query)>0)
                 {

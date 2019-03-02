@@ -35,4 +35,28 @@ if(isset($_GET['update']))//Sikeres személyes adat változtatás
             </div>';
     }
 }
+if(isset($_GET['deactivated']))//Sikeres deaktiválta a profilját a felhasználó
+{
+    if($_GET['deactivated']==true)
+    {
+        echo '<div class="alert alert-success fade show">
+                <strong>A felhasználói fiókját deaktiváltuk!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+    }
+}
+if(isset($_GET['error']))//Sikeres deaktiválta a profilját a felhasználó
+{
+    if($_GET['error']=="sqlerror")
+    {
+        echo '<div class="alert alert-danger fade show">
+                <strong>Hiba történt a kapcsolatban!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+    }
+}
 
