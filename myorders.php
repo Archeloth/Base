@@ -45,7 +45,7 @@ include 'includes/head.php';
                         echo '<td>'.$row['megnevezes'].'</td>';
                         echo '<td>'.$row['rendelesIdopontja'].'</td>';
                         echo '<td>'.$row['timediff'].' napja</td>';
-                        echo '<td>'.$row['userName'].'</td>';//Ezt lehetne linké tenni, ami rákeres a betegek listáján
+                        echo '<td><a href="patients.php?search='.$row['userName'].'&search-submit=">'.$row['userName'].'</a></td>';
                         echo '<td><a href="includes/fullfill.order.php?user='.$row['userId'].'&time='.$row['rendelesIdopontja'].'">Rendelés teljesítése</a></td>';
                         echo '</tr>';
                     }

@@ -126,7 +126,7 @@ for($i=8;$i<16;$i++)//óra
             //echo '<td class="'.$classok.'">i:'.$i.'k:'.$k->format('Y-m-d').'</td>';
             if($_SESSION['adminE']==1)
             {
-                echo '<td class="'.$classok.'"><a href="#">'.$value.'</a></td>';
+                echo '<td class="'.$classok.'"><a href="patients.php?search='.$value.'&search-submit=">'.$value.'</a></td>';
             }
             else
             {
