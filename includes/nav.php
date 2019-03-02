@@ -50,7 +50,7 @@
           
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="myprofile.php">Profilom</a>
-              <a class="dropdown-item" href="#">Időpontjaim</a>
+              <a class="dropdown-item" href="mymeetings.php">Időpontjaim</a>
               <a class="dropdown-item" href="#">Beállítások</a>
             </div>
           </div>';

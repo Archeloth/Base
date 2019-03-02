@@ -86,6 +86,7 @@ for($i=8;$i<16;$i++)//óra
                 }
                 else
                 {
+                    //Ez így csak akkor szinezné ki a mai napot, ha lenne a táblában foglalt
                     if($j==$current_day && $week==$current_week)//Mert amúgy kiszinezné az összes X-edik napot
                     {
                         if (strpos($classok, 'ma') === false)//Tehát benne van, mert amúgy 5-6-szor bele tenné
@@ -107,11 +108,6 @@ for($i=8;$i<16;$i++)//óra
                 echo '<td class="'.$classok.'"></td>';
             }
             
-            //TODO: Ellenőrzés és színezés | mai nap kiválasztása
-            
-            //TODO: Csoportos torna alter table szabad helyek más szín
-
-
             //in_array($i,$lefoglaltak) && in_array(($elso_nap+$j-1),$lefoglaltak)
             
         }
