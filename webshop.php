@@ -1,5 +1,6 @@
 <?php
 include 'includes/head.php';
+include 'includes/notifications.php';
 ?>
     <link rel="stylesheet" href="css/webshop_style.css">
     <title>Web-shop</title>

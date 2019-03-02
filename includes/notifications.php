@@ -59,4 +59,25 @@ if(isset($_GET['error']))//Sikeres deaktiválta a profilját a felhasználó
             </div>';
     }
 }
+if(isset($_GET['order']))
+{
+    if($_GET['order']=="success")//A rendelés sikeres volt
+    {
+        echo '<div class="alert alert-success fade show">
+                <strong>A rendelése sikeres volt!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+    }
+    else if($_GET['order']=="failed")
+    {
+        echo '<div class="alert alert-danger fade show">
+                <strong>A rendelése sikertelen volt.</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+    }
+}
 
