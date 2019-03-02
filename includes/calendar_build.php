@@ -84,18 +84,15 @@ for($i=8;$i<16;$i++)//óra
                     $classok.="foglalt ";
                     $value=$foglalt['user'];
                 }
-                else
+                
+            }
+            if($j==$current_day && $week==$current_week)//Mert amúgy kiszinezné az összes X-edik napot
+            {
+                if (strpos($classok, 'ma') === false)//Tehát benne van, mert amúgy 5-6-szor bele tenné
                 {
-                    //Ez így csak akkor szinezné ki a mai napot, ha lenne a táblában foglalt
-                    if($j==$current_day && $week==$current_week)//Mert amúgy kiszinezné az összes X-edik napot
-                    {
-                        if (strpos($classok, 'ma') === false)//Tehát benne van, mert amúgy 5-6-szor bele tenné
-                        {
-                            $classok.="ma ";
-                        }
-                        $value="";
-                    }
+                    $classok.="ma ";
                 }
+                $value="";
             }
             $classok.="nap ";
             //echo '<td class="'.$classok.'">i:'.$i.'k:'.$k->format('Y-m-d').'</td>';
