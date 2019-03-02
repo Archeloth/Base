@@ -39,7 +39,7 @@
                   <a class="nav-link" href="new_article.php">Új cikk írása</a>
                 </li>';
                 echo '<li class="nav-item">
-                <a class="nav-link" href="#">Betegek</a>
+                <a class="nav-link" href="patients.php">Betegek</a>
               </li>';
             }
             

@@ -9,6 +9,7 @@ if(isset($_POST['info-submit']))
     }
     else
     {*/
+        $user=$_SESSION['userId'];
         $newknev=$_POST['knev'];
         $newvnev=$_POST['vnev'];
         $newnem=$_POST['nem'];
@@ -17,7 +18,7 @@ if(isset($_POST['info-submit']))
         $newlakcim=$_POST['lakcim'];
 
         require 'connection.php';
-        $sql="UPDATE szemelyes_adatok SET knev=?, vnev=?, nem=?, telszam=?, szuldatum=?, lakcim=?";
+        $sql="UPDATE szemelyes_adatok SET knev=?, vnev=?, nem=?, telszam=?, szuldatum=?, lakcim=? WHERE userId=?";
         $stmt=mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt,$sql))
         {
@@ -26,7 +27,7 @@ if(isset($_POST['info-submit']))
         }
         else
         {
-            mysqli_stmt_bind_param($stmt,'ssisss',$newknev,$newvnev,$newnem,$newtelszam,$newszuldatum,$newlakcim);
+            mysqli_stmt_bind_param($stmt,'ssissss',$newknev,$newvnev,$newnem,$newtelszam,$newszuldatum,$newlakcim,$user);
             mysqli_stmt_execute($stmt);
             header('Location: ../myprofile.php?update=true');
             exit();
