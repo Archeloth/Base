@@ -47,7 +47,7 @@ $current_week=date('W');
     //Órák ellenőrzése
 include_once "connection.php";
 //Hétfő és vasárnap közötti idők kiszedése csak
-$sql="SELECT * FROM idopontok WHERE nap >= '$elso_nap' AND nap <= '$utolso_nap'";//"SELECT * FROM idopontok WHERE (nap BETWEEN '$utolso_nap' AND '$elso_nap') AND elerheto=0"
+$sql="SELECT * FROM tornazok INNER JOIN bejelentkezo_adatok ON tornazok.userId = bejelentkezo_adatok.userId INNER JOIN tornak ON tornazok.tornaId=tornak.tornaId WHERE tornazok.nap >= '$elso_nap' AND tornazok.nap <= '$utolso_nap'";//"SELECT * FROM idopontok WHERE (nap BETWEEN '$utolso_nap' AND '$elso_nap') AND elerheto=0"
 $szinezendo=mysqli_query($conn,$sql);
 $lefoglaltak=array();
 while($row=mysqli_fetch_assoc($szinezendo))
@@ -81,8 +81,24 @@ for($i=8;$i<16;$i++)//óra
                 //echo $foglalt['nap'].' '.$foglalt['idopont'].'<br>';
                 if($foglalt['nap']==$k->format('Y-m-d') && $foglalt['idopont']==$i)//Elvileg a foglalt felülírja a ma-t
                 {
-                    $classok.="foglalt ";
-                    $value=$foglalt['user'];
+                    if($foglalt['megnevezes']=="Egyeni torna")
+                    {
+                        $classok.="egyeni ";
+                    }
+                    else if($foglalt['megnevezes']=="Csoportos gyerek torna")
+                    {
+                        $classok.="gyerek_csop ";
+                    }
+                    else if($foglalt['megnevezes']=="Felnott csoport")
+                    {
+                        $classok.="felnott_csop ";
+                    }
+                    else if($foglalt['megnevezes']=="Idos csoportos torna")
+                    {
+                        $classok.="idos_csop ";
+                    }
+                    
+                    $value=$foglalt['userName'];
                 }
                 
             }
@@ -92,7 +108,14 @@ for($i=8;$i<16;$i++)//óra
                 {
                     $classok.="ma ";
                 }
-                $value="";
+                if($foglalt['nap']==$k->format('Y-m-d') && $foglalt['idopont']==$i)
+                {
+                    $value=$foglalt['userName'];
+                }
+                else
+                {
+                    $value="";
+                }
             }
             $classok.="nap ";
             //echo '<td class="'.$classok.'">i:'.$i.'k:'.$k->format('Y-m-d').'</td>';
@@ -161,7 +184,7 @@ for($i=8;$i<16;$i++)//óra
         $nap=$_POST['napp'];
         $idopont=$_POST['idopontt'];
 
-        $sql="DELETE FROM idopontok WHERE nap='$nap' AND idopont='$idopont';";
+        $sql="DELETE FROM tornazok WHERE nap='$nap' AND idopont='$idopont';";
         if(mysqli_query($conn,$sql))
         {
             echo "Sikeres törlés!";
@@ -182,13 +205,13 @@ for($i=8;$i<16;$i++)//óra
 
         $idopont=mysqli_real_escape_string($conn,$_POST['idopont']);
         
-        $user=$_SESSION['userName'];
+        $user=$_SESSION['userId'];
 
         //echo $nap." ".$idopont." ".$user;
 
         //echo "<br>Hétfő: ".$elso_nap." Varásnap:".$utolso_nap;
 
-        $sql="SELECT * FROM idopontok WHERE nap = '$nap' AND idopont = '$idopont'";
+        $sql="SELECT * FROM tornazok WHERE nap = '$nap' AND idopont = '$idopont'";
         $result=mysqli_query($conn,$sql);
         $queryResult=mysqli_num_rows($result);
         if($queryResult > 0)
@@ -198,7 +221,7 @@ for($i=8;$i<16;$i++)//óra
         }
         else
         {
-            $sql="INSERT INTO idopontok VALUES ('$nap','$idopont','$user',0);";
+            $sql="INSERT INTO tornazok VALUES ('$user',1,'$nap','$idopont');";
 
             if(mysqli_query($conn,$sql))
             {

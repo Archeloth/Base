@@ -7,6 +7,18 @@
 .foglalt{
     background-color: red;
 }
+.egyeni{
+    background-color: rgb(255, 146, 82);
+}
+.gyerek_csop{
+    background-color: rgb(124, 255, 124);
+}
+.felnott_csop{
+    background-color: rgb(213, 100, 228);
+}
+.idos_csop{
+    background-color: rgb(31, 160, 153);
+}
 .nap{
     height: 60px;
     width: 120px;
