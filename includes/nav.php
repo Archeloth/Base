@@ -6,14 +6,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Webáruház</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="#">A honlapról</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tornaterem</a>
+            <a class="nav-link" href="#">Tornateremről</a>
           </li>
           
           <?php
@@ -38,7 +36,9 @@
                 <a class="nav-link" href="#">Betegek</a>
               </li>';
             }
-
+            echo '<li class="nav-item">
+                    <a class="nav-link" href="webshop.php">Webáruház</a>
+                  </li>';
             echo '<li class="nav-item">
                   <a class="nav-link" href="booking.php">Időpont foglalás</a>
                 </li>';
@@ -51,7 +51,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="myprofile.php">Profilom</a>
               <a class="dropdown-item" href="mymeetings.php">Időpontjaim</a>
-              <a class="dropdown-item" href="#">Beállítások</a>
+              <a class="dropdown-item" href="#">Függő rendelések</a>
             </div>
           </div>';
 
