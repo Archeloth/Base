@@ -27,6 +27,12 @@
           }
           else
           {
+            echo '<li class="nav-item">
+                    <a class="nav-link" href="webshop.php">Webáruház</a>
+                  </li>';
+            echo '<li class="nav-item">
+                  <a class="nav-link" href="booking.php">Időpont foglalás</a>
+                </li>';
             if($_SESSION['adminE']==true)
             {
               echo '<li class="nav-item">
@@ -36,12 +42,7 @@
                 <a class="nav-link" href="#">Betegek</a>
               </li>';
             }
-            echo '<li class="nav-item">
-                    <a class="nav-link" href="webshop.php">Webáruház</a>
-                  </li>';
-            echo '<li class="nav-item">
-                  <a class="nav-link" href="booking.php">Időpont foglalás</a>
-                </li>';
+            
 
             echo '<div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,7 +52,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="myprofile.php">Profilom</a>
               <a class="dropdown-item" href="mymeetings.php">Időpontjaim</a>
-              <a class="dropdown-item" href="#">Függő rendelések</a>
+              <a class="dropdown-item" href="myorders.php">Függő rendelések</a>
             </div>
           </div>';
 
