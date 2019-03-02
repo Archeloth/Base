@@ -23,4 +23,16 @@ if(isset($_GET['changed']))//Sikeres felhasználónév módosítás
             </div>';
     }
 }
+if(isset($_GET['update']))//Sikeres személyes adat változtatás
+{
+    if($_GET['update']==true)
+    {
+        echo '<div class="alert alert-success fade show">
+                <strong>Az adatai sikeresen megváltoztak!</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>';
+    }
+}
 
