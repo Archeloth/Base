@@ -75,6 +75,7 @@ for($i=8;$i<16;$i++)//óra
 
             $classok="";
             $value="";
+            $megnevezes="";
             foreach($lefoglaltak as $foglalt)
             {
                 //echo 'k:'.$k.' '
@@ -84,18 +85,22 @@ for($i=8;$i<16;$i++)//óra
                     if($foglalt['megnevezes']=="Egyeni torna")
                     {
                         $classok.="egyeni ";
+                        $megnevezes="Egyéni";
                     }
                     else if($foglalt['megnevezes']=="Csoportos gyerek torna")
                     {
                         $classok.="gyerek_csop ";
+                        $megnevezes="Gyerek csoport";
                     }
                     else if($foglalt['megnevezes']=="Felnott csoport")
                     {
                         $classok.="felnott_csop ";
+                        $megnevezes="Felnőtt csoport";
                     }
                     else if($foglalt['megnevezes']=="Idos csoportos torna")
                     {
                         $classok.="idos_csop ";
+                        $megnevezes="Nyugdíjas csoport";
                     }
                     
                     $value=$foglalt['userName'];
@@ -125,7 +130,7 @@ for($i=8;$i<16;$i++)//óra
             }
             else
             {
-                echo '<td class="'.$classok.'"></td>';
+                echo '<td class="'.$classok.'">'.$megnevezes.'</td>';
             }
             
             //in_array($i,$lefoglaltak) && in_array(($elso_nap+$j-1),$lefoglaltak)
@@ -147,6 +152,20 @@ for($i=8;$i<16;$i++)//óra
             <label for="idopont">Hour:</label>
             <input type="text" name="idopont" id="idopont" readonly>
 
+            <?php
+            if($_SESSION['adminE']==1)
+            {
+                echo '<select name="torna_tipus">';
+                $sql="SELECT tornaId,tipus FROM tornak ORDER BY tornaId;";
+                $query=mysqli_query($conn,$sql);
+                while($row=mysqli_fetch_array($query))
+                {
+                    echo '<option value="'.$row['tornaId'].'">'.$row['tipus'].'</option>';
+                }
+                echo '</select>';
+            }
+            
+            ?>
             <button type="submit" name="foglal" class="btn btn-primary">Book</button>
         </form>
     </div>
@@ -205,6 +224,16 @@ for($i=8;$i<16;$i++)//óra
 
         $idopont=mysqli_real_escape_string($conn,$_POST['idopont']);
         
+        if(isset($_POST['torna_tipus']))
+        {
+            $tipus=$_POST['torna_tipus'];
+        }
+        else
+        {
+            $tipus=1;
+        }
+        
+
         $user=$_SESSION['userId'];
 
         //echo $nap." ".$idopont." ".$user;
@@ -221,7 +250,7 @@ for($i=8;$i<16;$i++)//óra
         }
         else
         {
-            $sql="INSERT INTO tornazok VALUES ('$user',1,'$nap','$idopont');";
+            $sql="INSERT INTO tornazok VALUES ('$user',$tipus,'$nap','$idopont');";
 
             if(mysqli_query($conn,$sql))
             {
