@@ -1,5 +1,7 @@
 <?php 
     include 'includes/head.php';
+    include 'includes/cookie.check.php';
+
     if(!isset($_GET['search-submit']) && !isset($_GET['search']))
     {
 ?>
@@ -64,7 +66,6 @@
 <?php include 'includes/nav.php'; ?>
 
 <?php 
-
 include 'includes/content.php'; 
 
 ?>
