@@ -83,6 +83,7 @@ include 'includes/head.php';
                 <tr>
                     <th>Termék:</th>
                     <th>Rendelés időpontja:</th>
+                    <th>Összeg:</th>
                     <?php if($_SESSION['adminE']==true) echo '<th>Rendelte:</th>'; ?>
                     <th>Számla:</th>
                 </tr>
@@ -96,6 +97,7 @@ include 'includes/head.php';
                         echo '<tr>';
                         echo '<td>'.$row['megnevezes'].'</td>';
                         echo '<td>'.$row['rendelesIdopontja'].'</td>';
+                        echo '<td>'.$row['nettoAr'].'</td>';
                         echo '<td>'.$row['userName'].'</td>';
                         echo '<td>#</td>';
                         echo '</tr>';
@@ -104,14 +106,25 @@ include 'includes/head.php';
                 else//User csak a sajátjait
                 {
                     $user=$_SESSION['userId'];
-                    $sql="SELECT * FROM rendelesek INNER JOIN termekek ON rendelesek.termekId=termekek.termekId WHERE rendelesek.userId='$user' AND rendelesek.teljesitve=1";
+                    $sql="SELECT * FROM rendelesek INNER JOIN termekek ON rendelesek.termekId=termekek.termekId INNER JOIN szemelyes_adatok ON rendelesek.userId=szemelyes_adatok.userId WHERE rendelesek.userId='$user' AND rendelesek.teljesitve=1";
                     $query=mysqli_query($conn,$sql);
                     while($row=mysqli_fetch_array($query))
                     {
                         echo '<tr>';
                         echo '<td>'.$row['megnevezes'].'</td>';
                         echo '<td>'.$row['rendelesIdopontja'].'</td>';
-                        echo '<td>#</td>';
+                        echo '<td>'.$row['nettoAr'].'</td>';
+                        echo '<td><form action="makepdf.php" method="post">
+                                        <input type="hidden" name="id" value="'.$row['rendelesId'].'">
+                                        <input type="hidden" name="termek" value="'.$row['megnevezes'].'">
+                                        <input type="hidden" name="nettoar" value="'.$row['nettoAr'].'">
+                                        <input type="hidden" name="idopont" value="'.$row['rendelesIdopontja'].'">
+                                        <input type="hidden" name="knev" value="'.$row['knev'].'">
+                                        <input type="hidden" name="vnev" value="'.$row['vnev'].'">
+                                        <input type="hidden" name="telszam" value="'.$row['telszam'].'">
+                                        <input type="hidden" name="lakcim" value="'.$row['lakcim'].'">
+                                        <button type="submit" class="btn btn-outline-secondary" name="pdf-submit">#</button>
+                                    </form></td>';
                         echo '</tr>';
                     }
                 }
