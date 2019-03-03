@@ -4,8 +4,7 @@ if(isset($_COOKIE['ekisokos_remember_me']))
 {
     $cookie_value=$_COOKIE['ekisokos_remember_me'];
     require 'connection.php';
-    $user=$_SESSION['userId'];
-    $update="UPDATE bejelentkezo_adatok SET token = NULL WHERE userId='$user'";
+    $update="UPDATE bejelentkezo_adatok SET token = NULL";//Az összeset törli | WHERE userId='$_SESSION["userId"]'
     $query=mysqli_query($conn,$update);
 
     mysqli_close($conn);
