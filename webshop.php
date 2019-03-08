@@ -64,5 +64,6 @@ include 'includes/notifications.php';
             }
         }
     </script>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>
