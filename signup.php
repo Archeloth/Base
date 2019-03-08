@@ -29,13 +29,35 @@
             <div class="form-group row">
                 <label for="username" class="col-sm-2 col-form-label">*Felhasználónév:</label>
                 <div class="col-sm-10">
-                    <input type="text" name="username" class="form-control" id="username">
+                    <?php
+                    if(isset($_GET['user']))
+                    {
+                        $user=$_GET['user'];
+                        echo '<input type="text" name="username" class="form-control" id="username" value="'.$user.'">';
+                    }
+                    else
+                    {
+                        echo '<input type="text" name="username" class="form-control" id="username">';
+                    }
+                    ?>
+                    
                 </div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">*E-mail cím:</label>
                 <div class="col-sm-10">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="@">
+                    <?php
+                    if(isset($_GET['mail']))
+                    {
+                        $mail=$_GET['mail'];
+                        echo '<input type="email" name="email" class="form-control" id="email" value="'.$mail.'">';
+                    }
+                    else
+                    {
+                        echo '<input type="email" name="email" class="form-control" id="email" placeholder="@">';
+                    }
+                    ?>
+                    
                 </div>
             </div>
             <div class="form-group row">
