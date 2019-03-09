@@ -6,8 +6,8 @@
 </head>
 <body>
     <?php include 'includes/nav.php'; ?>
-    <div class="container">
-        <div class="row py-3">
+    <div class="container py-5">
+        <div class="row">
             <div class="offset-sm-1 col-sm-5">
                 <h3>A tornateremről...</h3>
                 <img class="img-fluid" src="images/vr-gym.jpg" title="A tornaterem (illusztráció)">

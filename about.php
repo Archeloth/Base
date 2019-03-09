@@ -6,7 +6,7 @@
 </head>
 <body>
     <?php include 'includes/nav.php'; ?>
-    <div class="container">
+    <div class="container py-5">
         <div class="offset-sm-2 col-sm-8">
             <h3>Kapcsolatok</h3>
             <p>A honalap készítőjének neve: Radován Barnabás</p>

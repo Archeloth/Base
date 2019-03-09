@@ -7,7 +7,7 @@ include 'includes/head.php';
 
 <body>
     <?php include 'includes/nav.php'; ?>
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
             <div class="col-sm-10">
                 <?php include 'includes/calendar_build.php'; ?>
