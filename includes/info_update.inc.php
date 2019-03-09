@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_POST['info-submit']))
 {
     /*
@@ -28,9 +29,17 @@ if(isset($_POST['info-submit']))
         else
         {
             mysqli_stmt_bind_param($stmt,'ssissss',$newknev,$newvnev,$newnem,$newtelszam,$newszuldatum,$newlakcim,$user);
-            mysqli_stmt_execute($stmt);
-            header('Location: ../myprofile.php?update=true');
-            exit();
+            $status=mysqli_stmt_execute($stmt);
+            if($status===false)
+            {
+                header('Location: ../info_update.php?error=sqlerror');
+                exit();
+            }
+            else
+            {
+                header('Location: ../myprofile.php?update=true');
+                exit();
+            }
         }
     //}
 }
