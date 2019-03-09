@@ -11,7 +11,7 @@
             <a class="nav-link" href="#">A honlapról</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tornateremről</a>
+            <a class="nav-link" href="about_gym.php">Tornateremről</a>
           </li>
           
           <?php
