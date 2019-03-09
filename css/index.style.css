@@ -1,6 +1,7 @@
 /*INCLUDES ALL THE BOOTSTRAP OVERWRITES AND CUSTOMIZATIONS*/
 body{
     margin-top: 56px;
+    margin-bottom: 70px;
     background-image: url("../images/linedpaper_2x.png");
 }
 .navbar{

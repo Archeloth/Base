@@ -8,7 +8,7 @@
         <ul class="navbar-nav ml-auto">
           
           <li class="nav-item">
-            <a class="nav-link" href="#">A honlapról</a>
+            <a class="nav-link" href="about.php">A honlapról</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about_gym.php">Tornateremről</a>
@@ -19,10 +19,10 @@
           if(!isset($_SESSION['userId']))
           {
             echo '<li class="nav-item">
-                    <a class="nav-link" href="login.php">Log in</a>
+                    <a class="nav-link" href="login.php">Bejelentkezés</a>
                   </li>';
           echo '<li class="nav-item">
-                  <a class="nav-link" href="signup.php">Sign Up</a>
+                  <a class="nav-link" href="signup.php">Regisztrálás</a>
                 </li>';
           }
           else

@@ -24,6 +24,7 @@
 <body>
 <?php include 'includes/nav.php'; ?>
     <div class="offset-sm-2 col-sm-8">
+        <h3 class="text-center py-3">Regisztráció</h3>
     <p>A csillaggal jelölt mezők kitöltése kötelező!</p>
         <form action="includes/signup.inc.php" method="post">
             <div class="form-group row">
