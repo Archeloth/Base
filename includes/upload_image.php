@@ -36,12 +36,12 @@ if(isset($_POST['submit']))
         if($keres)
         {
             echo "Az adatbázisban rögzítve lett!";
-            header('Refresh: 2, url=modify_article.php?id='.$id.'');
+            header('Location:../modify_article.php?id='.$id.'');
         }
         else
         {
             echo "Hiba az adatbázisba íráskor!".mysqli_error($conn);
-            header('Refresh: 2, url=modify_article.php?id='.$id.'');
+            header('Location:../modify_article.php?id='.$id.'');
         }
     }
     $conn->close();

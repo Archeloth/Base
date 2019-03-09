@@ -9,11 +9,11 @@
         $file="images/$kepnev";
         unlink($file);
         echo "A kép törölve lett";
-        header('Refresh: 2, url=modify_article.php?id='.$id.'');
+        header('Location:../modify_article.php?id='.$id.'');
     }
     else
     {
         echo "Hiba a törléskor";
     }
-    $connection->close();
+    $conn->close();
 ?>

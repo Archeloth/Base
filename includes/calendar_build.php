@@ -206,11 +206,21 @@ for($i=8;$i<16;$i++)//óra
         $sql="DELETE FROM tornazok WHERE nap='$nap' AND idopont='$idopont';";
         if(mysqli_query($conn,$sql))
         {
-            echo "Sikeres törlés!";
+            echo '<div class="alert alert-success fade show">
+                    <strong>Sikeres törlés!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
         }
         else
         {
-            echo "Hiba a törléskor: ".mysqli_error($conn);
+            echo '<div class="alert alert-danger fade show">
+                    <strong>Hiba a törléskor! '.mysqli_error($conn).'</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
         }
     }
 ?>
@@ -224,48 +234,75 @@ for($i=8;$i<16;$i++)//óra
 
         $idopont=mysqli_real_escape_string($conn,$_POST['idopont']);
         
-        if(isset($_POST['torna_tipus']))
+        if($nap<=date("Y-m-d"))
         {
-            $tipus=$_POST['torna_tipus'];
+            echo '<div class="alert alert-danger fade show">
+                    <strong>Csak a holnapi és az azutáni napokra tudsz foglalni!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
         }
         else
         {
-            $tipus=1;
-        }
-        
-
-        $user=$_SESSION['userId'];
-
-        //echo $nap." ".$idopont." ".$user;
-
-        //echo "<br>Hétfő: ".$elso_nap." Varásnap:".$utolso_nap;
-
-        $sql="SELECT * FROM tornazok WHERE nap = '$nap' AND idopont = '$idopont'";
-        $result=mysqli_query($conn,$sql);
-        $queryResult=mysqli_num_rows($result);
-        if($queryResult > 0)
-        {
-            echo 'Ide nem tudsz foglalni!';
-            //Már létezik
-        }
-        else
-        {
-            $sql="INSERT INTO tornazok VALUES ('$user',$tipus,'$nap','$idopont');";
-
-            if(mysqli_query($conn,$sql))
+            if(isset($_POST['torna_tipus']))
             {
-                //Sikerül
-                echo "Sikeres foglalás!";
+                $tipus=$_POST['torna_tipus'];
             }
             else
             {
-                //Nem sikerül
-                echo "Hiba a foglaláskor: ".mysqli_error($conn);
+                $tipus=1;
             }
-            //Majd egy header refresh ugyanide
+            
+    
+            $user=$_SESSION['userId'];
+    
+            //echo $nap." ".$idopont." ".$user;
+    
+            //echo "<br>Hétfő: ".$elso_nap." Varásnap:".$utolso_nap;
+    
+            $sql="SELECT * FROM tornazok WHERE nap = '$nap' AND idopont = '$idopont'";
+            $result=mysqli_query($conn,$sql);
+            $queryResult=mysqli_num_rows($result);
+            if($queryResult > 0)
+            {
+                echo '<div class="alert alert-danger fade show">
+                    <strong>Ide már nem tudsz foglalni!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+                //Már létezik
+            }
+            else
+            {
+                $sql="INSERT INTO tornazok VALUES ('$user',$tipus,'$nap','$idopont');";
+    
+                if(mysqli_query($conn,$sql))
+                {
+                    //Sikerül
+                    echo '<div class="alert alert-success fade show">
+                    <strong>Sikeres foglalás!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+                }
+                else
+                {
+                    //Nem sikerül
+                    echo '<div class="alert alert-danger fade show">
+                    <strong>Hiba a foglaláskor! '.mysqli_error($conn).'</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+                }
+                //Majd egy header refresh ugyanide
+            }
+           
+            $conn->close();
         }
-       
-        $conn->close();
     }
 ?>
 
@@ -291,5 +328,4 @@ for($i=8;$i<16;$i++)//óra
             }
         }
     }
-
 </script>

@@ -56,7 +56,7 @@ if($_SESSION['adminE']==1)
                     <button type="submit" name="submit" class="btn btn-success">Feltölt</button>
                 </form>
                 <hr>';
-            echo '<a href="delete_article.php?id='.$id.'"><button class="btn btn-danger">Törlés</button></a><hr>';
+            echo '<a href="includes/delete_article.php?id='.$id.'"><button class="btn btn-danger">Törlés</button></a><hr>';
             echo '<a href="index.php">Vissza a kezdőlapra</a>';
             ?>
         </div>

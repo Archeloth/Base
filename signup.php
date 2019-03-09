@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="password-repeat" class="col-sm-2 col-form-label">*Személyes adatok:</label>
+                <label for="password-repeat" class="col-sm-2 col-form-label">*<u>Személyes adatok</u>:</label>
                 <div class="col-sm-5">
                     <input type="text" name="knev" class="form-control" placeholder="Keresztnév">
                 </div>
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="nem" class="col-sm-2 col-form-label">Nem:</label>
+                <label for="nem" class="col-sm-2 col-form-label">*Nem:</label>
                 <div class="col-sm-10">
                     <select name="nem" id="" class="form-control">
                         <option value="0">férfi</option>
@@ -121,12 +121,17 @@
                 <label for="biztkerdes" class="col-sm-2 col-form-label">*Kérdés:</label>
                 <div class="col-sm-10">
                     <select name="biztkerdes" class="form-control">
-                        <option value="Mi_volt_a_gyermekkori_beceneved?">Mi volt a gyermekkori beceneved?</option>
-                        <option value="Mi_a_neve_a_legjobb_baratodnak?">Mi a neve a legjobb barátodnak?</option>
-                        <option value="Mi_volt_az_altalanos_iskolad_neve?">Mi volt az általános iskolád neve?</option>
-                        <option value="Melyik_honapban_van_a_testvered_szuletesnapja?">Melyik hónapban van a testvéred születésnapja?</option>
-                        <option value="Melyik_varosban_dolgoztal_eloszor?">Melyik városban dolgoztál először?</option>
-                        <option value="Mi_volt_az_elso_haziallatod_neve?">Mi volt az első háziállatod neve?</option>
+                        <?php
+                        require 'includes/connection.php';
+                        $sql="SELECT * FROM biztonsagi_kerdesek";
+                        $query=mysqli_query($conn,$sql);
+                        while($row=mysqli_fetch_array($query))
+                        {
+                            echo '<option value="'.$row['biztonsagi_kerdes'].'">'.$row['biztonsagi_kerdes'].'</option>';
+                        }
+                        mysqli_close($conn);
+                        ?>
+                        
                     </select>
                 </div>
             </div>
@@ -146,5 +151,6 @@
         </form>
         <a href="index.php">Vissza a főoldalra</a>
     </div>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

@@ -1,9 +1,16 @@
+/*INCLUDES ALL THE BOOTSTRAP OVERWRITES AND CUSTOMIZATIONS*/
 body{
     margin-top: 56px;
     background-image: url("../images/linedpaper_2x.png");
 }
 .navbar{
     background-color: #b6244f !important;
+  }
+  .navbar .navbar-toggler{
+    background-color: #fbb7c0;
+  }
+  .navbar .navbar-toggler .navbar-toggler-icon{
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
   .navbar .navbar-brand {
     color: #fbb7c0;
@@ -42,10 +49,10 @@ body{
   .navbar .navbar-nav .dropdown-menu .dropdown-item:focus,
   .navbar .navbar-nav .dropdown-menu .dropdown-item.active {
     color: #fbb7c0;
-    background-color: #a22147;
+    background-color: #d33a68;
   }
   .navbar .navbar-nav .dropdown-menu .dropdown-divider {
-    border-top-color: #a22147;
+    border-top-color: #ffffff;
   }
   .navbar .navbar-nav .nav-item.active .nav-link,
   .navbar .navbar-nav .nav-item.active .nav-link:hover,
@@ -57,11 +64,11 @@ body{
     background-color: #a22147;
   }
   .navbar .navbar-toggle {
-    border-color: #a22147;
+    border-color: #ee6d94;
   }
   .navbar .navbar-toggle:hover,
   .navbar .navbar-toggle:focus {
-    background-color: #a22147;
+    background-color: #ee6d94;
   }
   .navbar .navbar-toggle .navbar-toggler-icon {
     color: #fbb7c0;
@@ -76,77 +83,24 @@ body{
   .navbar .navbar-link:hover {
     color: #fbb7c0;
   }
-  
-  @media (max-width: 575px) {
-    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {
-      color: #fbb7c0;
-    }
-    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:hover,
-    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item:focus {
-      color: #fbb7c0;
-    }
-    .navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item.active {
-      color: #fbb7c0;
-      background-color: #a22147;
-    }
-  }
-  
-  @media (max-width: 767px) {
-    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item {
-      color: #fbb7c0;
-    }
-    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:hover,
-    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item:focus {
-      color: #fbb7c0;
-    }
-    .navbar-expand-md .navbar-nav .show .dropdown-menu .dropdown-item.active {
-      color: #fbb7c0;
-      background-color: #a22147;
-    }
-  }
-  
-  @media (max-width: 991px) {
-    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
-      color: #fbb7c0;
-    }
-    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:hover,
-    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item:focus {
-      color: #fbb7c0;
-    }
-    .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item.active {
-      color: #fbb7c0;
-      background-color: #a22147;
-    }
-  }
-  
-  @media (max-width: 1199px) {
-    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item {
-      color: #fbb7c0;
-    }
-    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:hover,
-    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item:focus {
-      color: #fbb7c0;
-    }
-    .navbar-expand-xl .navbar-nav .show .dropdown-menu .dropdown-item.active {
-      color: #fbb7c0;
-      background-color: #a22147;
-    }
-  }
-  
-  .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item {
-    color: #fbb7c0;
-  }
-  .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:hover,
-  .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item:focus {
-    color: #fbb7c0;
-  }
-  .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
-    color: #fbb7c0;
-    background-color: #a22147;
-  }
 footer{
-    background-color: #504746 !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    width: 100%;
+    height: 4em;
+    position: fixed;
+    bottom: 0;
 }
-/*.card .my-4 .card-header{
-    background-color: #b89685 !important;
-}*/
+.navbar .navbar-collapse .btn-custom{
+  background-color: lightpink;
+}
+.mycard{
+  margin-top: 20px;
+  box-shadow: 6px 7px 18px 4px rgba(71,43,28,0.75);
+}
+.comment{
+  margin-top: 20px;
+}
+#commenting{
+  resize: none;
+  margin-top: 20px;
+}

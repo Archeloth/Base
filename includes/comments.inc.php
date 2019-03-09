@@ -20,7 +20,7 @@ function showSelectedArticle($article_id)
           
         if(mysqli_stmt_fetch($stmt))
         {
-            echo '<div class="card mb-4">';
+            echo '<div class="card mb-4 mycard">';
             echo '<div class="card-body">';
             echo '<h2 class="card-title">'.$title.'</h2>';
             echo '<p class="card-text">'.$content.'</p>';
@@ -51,7 +51,7 @@ function showSelectedComments($article_id)
     while($row=mysqli_fetch_assoc($results))
     {
         echo '
-        <div class="card">
+        <div class="card mycard comment">
             <div class="card-body">
                 <div class="card-text">
                     <p>'.$row['content'].'</p>

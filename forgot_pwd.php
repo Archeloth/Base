@@ -11,6 +11,7 @@
     <title>Azonosítás</title>
 </head>
 <body>
+<?php include 'includes/nav.php'; ?>
     <div class="container">
         <div class="offset-sm-3 col-sm-6">
             <h3>Válaszolj a biztonsági kérdésre</h3>
