@@ -24,7 +24,7 @@
 <body>
 <?php include 'includes/nav.php'; ?>
     <div class="offset-sm-2 col-sm-8">
-        <h3 class="text-center py-3">Regisztráció</h3>
+        <h3 class="text-center py-5">Regisztráció</h3>
     <p>A csillaggal jelölt mezők kitöltése kötelező!</p>
         <form action="includes/signup.inc.php" method="post">
             <div class="form-group row">
@@ -34,11 +34,11 @@
                     if(isset($_GET['user']))
                     {
                         $user=$_GET['user'];
-                        echo '<input type="text" name="username" class="form-control" id="username" value="'.$user.'">';
+                        echo '<input type="text" name="username" class="form-control" id="username" value="'.$user.'" title="Maximum 50 karakter. Angol ABC betűi (kis és nagy) és számok lehetnek benne.">';
                     }
                     else
                     {
-                        echo '<input type="text" name="username" class="form-control" id="username">';
+                        echo '<input type="text" name="username" class="form-control" id="username" title="Maximum 50 karakter. Angol ABC betűi (kis és nagy) és számok lehetnek benne.">';
                     }
                     ?>
                     
@@ -51,11 +51,11 @@
                     if(isset($_GET['mail']))
                     {
                         $mail=$_GET['mail'];
-                        echo '<input type="email" name="email" class="form-control" id="email" value="'.$mail.'">';
+                        echo '<input type="email" name="email" class="form-control" id="email" value="'.$mail.'" title="Érvényes e-mail cím @ és domain névvel (.hu, .com)">';
                     }
                     else
                     {
-                        echo '<input type="email" name="email" class="form-control" id="email" placeholder="@">';
+                        echo '<input type="email" name="email" class="form-control" id="email" placeholder="@" title="Érvényes e-mail cím @ és domain névvel (.hu, .com)">';
                     }
                     ?>
                     
@@ -95,7 +95,7 @@
                 <label for="telefonszam" class="col-sm-2 col-form-label">*Telefonszám:</label>
                 <div class="col-sm-10">
                     <!--type="tel" pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" --- Csak Safariban működik elvileg-->
-                    <input type="text" pattern="[0-9]{9}" name="telefonszam" class="form-control" placeholder="Telefonszám">
+                    <input type="text" pattern="[0-9]{9}" name="telefonszam" class="form-control" placeholder="Telefonszám" title="9 karakterből álló számsor. Pl:301112222">
                 </div>
             </div>
             <div class="form-group row">

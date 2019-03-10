@@ -11,7 +11,7 @@ if(isset($_GET['search']))
     {
         while($row = mysqli_fetch_assoc($result))
         {
-            echo '<div class="card mb-4">';
+            echo '<div class="card mb-4 mycard">';
             //echo '<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">';
             echo '<div class="card-body">';
             echo '<h2 class="card-title">'. $row['title'].'</h2>';

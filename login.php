@@ -6,7 +6,7 @@ include "includes/head.php"; ?>
     <title>Bejelentkezés</title>
 </head>
 <body>
-<div class="container">
+<div class="container py-5">
     <div class="offset-sm-3 col-sm-6">
         <h2>Bejelentkezés E-Kisokosba</h2>
         <form action="includes/login.inc.php" method="post">
