@@ -7,7 +7,7 @@ if($_SESSION['adminE']==1)
     <title>Módosítás</title>
     </head>
     <body>
-    <div class="container">
+    <div class="container py-5">
         <div class="offset-sm-1 col-sm-10">
             <h3>Itt tudod módosítani az adott cikket</h3>
             <form action="includes/update_article.php" method="post">

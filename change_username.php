@@ -6,7 +6,7 @@ include 'includes/change_username.error.check.php';
 </head>
 <body>
 <?php include 'includes/nav.php'; ?>
-    <div class="container">
+    <div class="container py-5">
         <div class="offset-sm-2 col-sm-8">
             <h3>Felhasználónév megváltoztatása</h3>
             <form action="includes/change_username.inc.php" method="post">

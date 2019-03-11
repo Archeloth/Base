@@ -5,7 +5,7 @@ include 'includes/head.php';
 </head>
 <body>
     <?php include 'includes/nav.php'; ?>
-    <div class="container-fluid">
+    <div class="container-fluid py-5">
         <div class="offset-sm-1 col-sm-10">
             <div class="row">
                 <div class="offset-sm-3 col-sm-3">

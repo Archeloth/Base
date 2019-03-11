@@ -12,7 +12,7 @@
 </head>
 <body>
 <?php include 'includes/nav.php'; ?>
-    <div class="container">
+    <div class="container py-5">
         <div class="offset-sm-3 col-sm-6">
             <h3>Válaszolj a biztonsági kérdésre</h3>
             <form action="includes/forgot_pwd.inc.php" method="post">

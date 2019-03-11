@@ -22,7 +22,7 @@ include 'includes/head.php';
     }
     mysqli_close($conn);
 ?>
-    <div class="container">
+    <div class="container py-5">
         <div class="offset-sm-2 col-sm-8">
         <h3>Adataid módosítása</h3>
         <form action="includes/info_update.inc.php" method="post">

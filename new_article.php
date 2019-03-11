@@ -7,7 +7,7 @@
     <title>Új cikk írása</title>
 </head>
 <body>
-<div class="container">
+<div class="container py-5">
     <div class="offset-sm-1 col-sm-10">
         <h3>Új cikk felvétele</h3>
         <form action="includes/insert_new.php" method="post">

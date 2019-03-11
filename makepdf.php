@@ -10,6 +10,7 @@ if(isset($_POST['pdf-submit']))
     $vnev=$_POST['vnev'];
     $telszam=$_POST['telszam'];
     $lakcim=$_POST['lakcim'];
+    $datum=date('Y-m-d');
 
     require 'tfpdf/tfpdf.php';
 
@@ -31,7 +32,7 @@ if(isset($_POST['pdf-submit']))
     
     $pdf->Cell(130 ,5,'[Szigetszentmiklós, 2310]',0,0);
     $pdf->Cell(25 ,5,'Dátum',0,0);
-    $pdf->Cell(34 ,5,'[dd/mm/yyyy]',0,1);
+    $pdf->Cell(34 ,5,'['.$datum.']',0,1);
     
     $pdf->Cell(130 ,5,'Telefonszám [+12345678]',0,0);
     $pdf->Cell(25 ,5,'Számlaszám',0,0);

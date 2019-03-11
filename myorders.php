@@ -23,7 +23,7 @@ include 'includes/head.php';
 </head>
 <body>
     <?php include 'includes/nav.php'; ?>
-    <div class="container">
+    <div class="container py-5">
         <div class="offset-sm-1 col-sm-10">
             <h3>Itt találhatóak a még függőben lévő rendelések</h3>
             <table class="table">
