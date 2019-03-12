@@ -12,8 +12,8 @@ $year = $dt->format('o');
 $week = $dt->format('W');
 ?>
 
-<a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>"><button class="btn btn-secondary">Previous week</button></a> <!--Previous week | $_SERVER['PHP_SELF']-->
-<a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>"><button class="btn btn-secondary">Next week</button></a> <!--Next week-->
+<a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week-1).'&year='.$year; ?>"><button class="btn btn-secondary">Előző hét</button></a> <!--Previous week | $_SERVER['PHP_SELF']-->
+<a href="<?php echo $_SERVER['PHP_SELF'].'?week='.($week+1).'&year='.$year; ?>"><button class="btn btn-secondary">Következő hét</button></a> <!--Next week-->
 
 <table id="table">
     <tr>

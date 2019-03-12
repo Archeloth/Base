@@ -69,6 +69,16 @@ if(isset($_POST['signup-submit']))
             header('Location: ../signup.php?error=invaliduser&mail='.$email);
             exit();
         }
+        else if(strlen($password)<8)
+        {
+            header('Location: ../signup.php?error=shortpassword&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if($username == $password)
+        {
+            header('Location: ../signup.php?error=usernamepassword&user='.$username.'&mail='.$email);
+            exit();
+        }
         else if($password !== $passwordRepeat)
         {
             header('Location: ../signup.php?error=passwordcheck&user='.$username.'&mail='.$email);
@@ -81,7 +91,7 @@ if(isset($_POST['signup-submit']))
         }
         else
         {
-            $sql="SELECT userId FROM bejelentkezo_adatok WHERE userId=?";
+            $sql="SELECT userId FROM bejelentkezo_adatok WHERE userName=?";
             $stmt=mysqli_stmt_init($conn);
             if(!mysqli_stmt_prepare($stmt,$sql))
             {

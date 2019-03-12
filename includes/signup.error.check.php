@@ -84,6 +84,22 @@ if(isset($_GET['error']))
                     </button>
                 </div>';
             break;
+        case "shortpassword":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A jelszó túl rövid!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "usernamepassword":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A felhasználónév és a jelszó nem egyezhet meg!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
         default:
             break;
     }
