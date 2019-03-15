@@ -36,11 +36,11 @@ include 'includes/head.php';
                 if(isset($_GET['search-submit']))
                 {
                     $keyword=$_GET['search'];
-                    $sql="SELECT * FROM bejelentkezo_adatok INNER JOIN szemelyes_adatok ON bejelentkezo_adatok.userId = szemelyes_adatok.userid INNER JOIN adminisztracio_adatok ON bejelentkezo_adatok.userId = adminisztracio_adatok.userId WHERE adminisztracio_adatok.betegE=1 AND bejelentkezo_adatok.userName LIKE '%$keyword%'";
+                    $sql="SELECT * FROM bejelentkezo_adatok INNER JOIN szemelyes_adatok ON bejelentkezo_adatok.userId = szemelyes_adatok.userid INNER JOIN adminisztracio_adatok ON bejelentkezo_adatok.userId = adminisztracio_adatok.userId WHERE adminisztracio_adatok.betegE=1 AND adminisztracio_adatok.aktivE=1 AND bejelentkezo_adatok.userName LIKE '%$keyword%'";
                 }
                 else
                 {
-                    $sql="SELECT * FROM bejelentkezo_adatok INNER JOIN szemelyes_adatok ON bejelentkezo_adatok.userId = szemelyes_adatok.userid INNER JOIN adminisztracio_adatok ON bejelentkezo_adatok.userId = adminisztracio_adatok.userId WHERE adminisztracio_adatok.betegE=1";
+                    $sql="SELECT * FROM bejelentkezo_adatok INNER JOIN szemelyes_adatok ON bejelentkezo_adatok.userId = szemelyes_adatok.userid INNER JOIN adminisztracio_adatok ON bejelentkezo_adatok.userId = adminisztracio_adatok.userId WHERE adminisztracio_adatok.betegE=1 AND adminisztracio_adatok.aktivE=1";
                 }
                 $query=mysqli_query($conn,$sql);
                 while($row=mysqli_fetch_array($query))

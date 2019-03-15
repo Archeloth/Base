@@ -76,7 +76,7 @@ for($i=8;$i<16;$i++)//óra
             $classok="";
             $value="";
             $megnevezes="";
-            foreach($lefoglaltak as $foglalt)
+            foreach($lefoglaltak as $foglalt)//Ha nincs a héten egy darab rendelés sem, akkor üres tömb lesz és undefined variable-t dob
             {
                 //echo 'k:'.$k.' '
                 //echo $foglalt['nap'].' '.$foglalt['idopont'].'<br>';
@@ -146,10 +146,10 @@ for($i=8;$i<16;$i++)//óra
 <div class="row">
     <div class="span6">
         <form action= <?php echo 'booking.php?week='.$week.'&year='.$year ?> method="post">
-            <label for="nap">Day:</label>
+            <label for="nap">Nap:</label>
             <input type="text" name="nap" id="nap" readonly><!--Azért nem disabled, mert az letiltja az elküldeni kívánt adatokat is, és üresen továbbítja-->
 
-            <label for="idopont">Hour:</label>
+            <label for="idopont">Óra:</label>
             <input type="text" name="idopont" id="idopont" readonly>
 
             <?php
@@ -166,7 +166,7 @@ for($i=8;$i<16;$i++)//óra
             }
             
             ?>
-            <button type="submit" name="foglal" class="btn btn-primary">Book</button>
+            <button type="submit" name="foglal" class="btn btn-primary">Foglal</button>
         </form>
     </div>
 
@@ -179,7 +179,7 @@ for($i=8;$i<16;$i++)//óra
         <?php 
             if($_SESSION['adminE']==1)
             {
-                echo '<button type="submit" name="delete" class="btn btn-danger">Delete</button>';
+                echo '<button type="submit" name="delete" class="btn btn-danger">Töröl</button>';
             } 
         ?>
         </form>

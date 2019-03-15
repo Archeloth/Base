@@ -4,6 +4,8 @@
     $sql="DELETE FROM articles WHERE article_id='$id';";
     if(mysqli_query($conn,$sql))
     {
+        $sql="DELETE FROM comments WHERE parentId='$id'";
+        mysqli_query($conn,$sql);
         echo "Successful data delete!";
         header('refresh:1 url=../index.php');
     }

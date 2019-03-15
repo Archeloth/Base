@@ -31,13 +31,14 @@ include 'includes/head.php';
                     <th>Termék:</th>
                     <th>Rendelés időpontja:</th>
                     <th>Függésben áll:</th>
+                    <th>#</th>
                     <?php if($_SESSION['adminE']==true) echo '<th>Rendelte:</th><th>Elfogadás:</th>';  ?>
                 </tr>
                 <?php
                 require 'includes/connection.php';
                 if($_SESSION['adminE']==true)//Az admin lássa az összes leadott rendelést
                 {
-                    $sql="SELECT termekek.megnevezes, rendelesek.rendelesIdopontja, TIMESTAMPDIFF(DAY,rendelesek.rendelesIdopontja, NOW()) as timediff, bejelentkezo_adatok.userName, bejelentkezo_adatok.userId FROM rendelesek INNER JOIN bejelentkezo_adatok ON rendelesek.userId = bejelentkezo_adatok.userId INNER JOIN termekek ON rendelesek.termekId=termekek.termekId WHERE rendelesek.teljesitve=0";
+                    $sql="SELECT termekek.megnevezes, rendelesek.rendelesIdopontja, TIMESTAMPDIFF(DAY,rendelesek.rendelesIdopontja, NOW()) as timediff, bejelentkezo_adatok.userName, bejelentkezo_adatok.userId, rendelesek.rendelesId FROM rendelesek INNER JOIN bejelentkezo_adatok ON rendelesek.userId = bejelentkezo_adatok.userId INNER JOIN termekek ON rendelesek.termekId=termekek.termekId WHERE rendelesek.teljesitve=0";
                     $result=mysqli_query($conn,$sql);
                     while($row=mysqli_fetch_array($result))
                     {
@@ -45,6 +46,7 @@ include 'includes/head.php';
                         echo '<td>'.$row['megnevezes'].'</td>';
                         echo '<td>'.$row['rendelesIdopontja'].'</td>';
                         echo '<td>'.$row['timediff'].' napja</td>';
+                        echo '<td><a href="includes/delete.order.php?rendelesId='.$row['rendelesId'].'&termek='.$row['megnevezes'].'">Törlés</a></td>';
                         echo '<td><a href="patients.php?search='.$row['userName'].'&search-submit=">'.$row['userName'].'</a></td>';
                         echo '<td><a href="includes/fullfill.order.php?user='.$row['userId'].'&time='.$row['rendelesIdopontja'].'">Rendelés teljesítése</a></td>';
                         echo '</tr>';
@@ -53,7 +55,7 @@ include 'includes/head.php';
                 else//Amúgy a user-ek pedig csak a sajátjukat láthatják
                 {
                     $user=$_SESSION['userId'];
-                    $sql="SELECT termekek.megnevezes, rendelesek.rendelesIdopontja, TIMESTAMPDIFF(DAY,rendelesek.rendelesIdopontja, NOW()) as timediff FROM rendelesek INNER JOIN termekek ON rendelesek.termekId=termekek.termekId WHERE rendelesek.userId='$user' AND rendelesek.teljesitve=0";//esetleg kiegészítve egy már teljesített rendelések szekcióval
+                    $sql="SELECT termekek.megnevezes, rendelesek.rendelesIdopontja, TIMESTAMPDIFF(DAY,rendelesek.rendelesIdopontja, NOW()) as timediff, rendelesId FROM rendelesek INNER JOIN termekek ON rendelesek.termekId=termekek.termekId WHERE rendelesek.userId='$user' AND rendelesek.teljesitve=0";
                     $result=mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)>0)
                     {
@@ -63,6 +65,7 @@ include 'includes/head.php';
                             echo '<td>'.$row['megnevezes'].'</td>';
                             echo '<td>'.$row['rendelesIdopontja'].'</td>';
                             echo '<td>'.$row['timediff'].' napja</td>';
+                            echo '<td><a href="includes/delete.order.php?rendelesId='.$row['rendelesId'].'&termek='.$row['megnevezes'].'">Törlés</a></td>';
                             echo '</tr>';
                         }
                     }

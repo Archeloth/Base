@@ -31,12 +31,14 @@ include 'includes/notifications.php';
                         if($row['raktaron']>0)
                         {
                             echo '<td>Igen</td>';
+                            echo '<td><a href="includes/order.php?ordered='.$row['termekId'].'">Rendelés</a></td>';
                         }
                         else
                         {
                             echo '<td>Nem</td>';
+                            echo '<td><p class="text-danger">Ez a termék jelenleg nem elérhető.</p></td>';
                         }
-                        echo '<td><a href="includes/order.php?ordered='.$row['termekId'].'">Rendelés</a></td>';
+                        
                         echo '</tr>';
                     }
                     mysqli_close($conn);
