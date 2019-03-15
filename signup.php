@@ -128,7 +128,7 @@
                         $query=mysqli_query($conn,$sql);
                         while($row=mysqli_fetch_array($query))
                         {
-                            echo '<option value="'.$row['biztonsagi_kerdes'].'">'.$row['biztonsagi_kerdes'].'</option>';
+                            echo '<option value="'.$row['biztId'].'">'.$row['biztonsagi_kerdes'].'</option>';
                         }
                         mysqli_close($conn);
                         ?>

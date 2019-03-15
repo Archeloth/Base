@@ -138,7 +138,7 @@ if(isset($_POST['signup-submit']))
                         $betegE=1;
                         mysqli_stmt_bind_param($stmt,"ssss",$uuid,$username,$email,$hashedPwd);
                         mysqli_stmt_bind_param($stmt2,"sssisss",$uuid,$knev,$vnev,$nem,$telefonszam,$szuletesdatum,$lakcim);
-                        mysqli_stmt_bind_param($stmt3,"ssssss",$uuid,$adminE,$aktivE,$betegE,$biztkerd,$hashedBiztVal);
+                        mysqli_stmt_bind_param($stmt3,"ssssis",$uuid,$adminE,$aktivE,$betegE,$biztkerd,$hashedBiztVal);
 
                         mysqli_stmt_execute($stmt);
                         mysqli_stmt_execute($stmt2);

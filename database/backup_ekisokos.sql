@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Már 09. 14:19
--- Kiszolgáló verziója: 10.1.36-MariaDB
--- PHP verzió: 7.2.10
+-- Létrehozás ideje: 2019. Már 15. 20:01
+-- Kiszolgáló verziója: 10.1.38-MariaDB
+-- PHP verzió: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -34,22 +34,9 @@ CREATE TABLE `adminisztracio_adatok` (
   `aktivE` tinyint(1) NOT NULL,
   `regisztracio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `betegE` tinyint(1) NOT NULL,
-  `biztKerdes` varchar(255) DEFAULT NULL,
+  `biztKerdes` int(11) NOT NULL,
   `biztValasz` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- A tábla adatainak kiíratása `adminisztracio_adatok`
---
-
-INSERT INTO `adminisztracio_adatok` (`userId`, `adminE`, `aktivE`, `regisztracio`, `betegE`, `biztKerdes`, `biztValasz`) VALUES
-('7574a21b-416d-4462-8b42-7684926984b7', 0, 1, '2019-02-21 18:06:19', 1, '0', ''),
-('7f47fe6a-b642-4850-b529-bdba785745c1', 0, 1, '2019-02-23 15:24:06', 1, '0', ''),
-('80438ad4-5de3-413c-b0a3-cfc6d47054e0', 0, 1, '2019-02-21 18:02:51', 1, '0', ''),
-('8746ce53-cd88-46ab-9ca8-48cd6598a0b3', 0, 1, '2019-03-09 11:04:14', 1, '0', ''),
-('b4dbbd05-e33b-4eef-9d51-be7a2040e15e', 0, 1, '2019-02-21 17:59:55', 1, '0', ''),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 0, 1, '2019-02-19 16:08:40', 1, '0', ''),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 1, 1, '2019-02-18 15:44:21', 0, '0', '');
 
 -- --------------------------------------------------------
 
@@ -92,19 +79,6 @@ CREATE TABLE `bejelentkezo_adatok` (
   `token` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- A tábla adatainak kiíratása `bejelentkezo_adatok`
---
-
-INSERT INTO `bejelentkezo_adatok` (`userId`, `userName`, `userEmail`, `userPwd`, `token`) VALUES
-('7574a21b-416d-4462-8b42-7684926984b7', 'test5', 'test@test.com', '$2y$10$7p.Omr4PZz9bDfqgqzjCyua9lNQiSlXW/UxWXq6ZbHUeY6tvJIMbe', NULL),
-('7f47fe6a-b642-4850-b529-bdba785745c1', 'test', 'test@test.com', '$2y$10$KCKijZTrBjGKhPnfT4x48unaFkXUU/mLMIj3CAscu6fsJemWLYNlq', NULL),
-('80438ad4-5de3-413c-b0a3-cfc6d47054e0', 'Laura9952', 'neil1977@yahoo.com', '$2y$10$iBClkPl20CDYac7fC2oGWegvSbJRRj4tDJXnY6aLJM9lFfiGyM9hC', NULL),
-('8746ce53-cd88-46ab-9ca8-48cd6598a0b3', 'bizttest', 'bizt@test.com', '$2y$10$gN2sl5BecQCP.bMl4SaOYOzViHJ9C9ucnCDYXIacEq9VzDskXWzDO', NULL),
-('b4dbbd05-e33b-4eef-9d51-be7a2040e15e', 'partik01', 'patrikthebest@freemail.hu', '$2y$10$8NoNwOoLi9QttLvqjR6v0e0w3wtskjq4C0VuxLJqqsz02TA6DAJ4i', NULL),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 'benoke22', 'benike@asd.hu', '$2y$10$WVFtLG8LGIA7Cud1jwPhouELmEOOJ0UBoK/D45RsC6OO0kF82pGtC', NULL),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 'admin', 'r.barnabas96@gmail.com', '$2y$10$IDMIQidZFwUu09QEjskf7uCGGopFJIkx6SuLj.CnEbgUt3nBET/8C', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -143,17 +117,6 @@ CREATE TABLE `comments` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- A tábla adatainak kiíratása `comments`
---
-
-INSERT INTO `comments` (`userId`, `username`, `content`, `comment_id`, `parentId`, `date`) VALUES
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 'admin', 'Oh wow!!', 16, 5, '2019-02-23 13:02:41'),
-('8746ce53-cd88-46ab-9ca8-48cd6598a0b3', 'bizttest', 'Jaj ez nagyon rossz!!!4', 17, 12, '2019-02-24 15:10:08'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 'admin', 'Te vagy a buta!', 18, 12, '2019-02-24 15:10:32'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 'benoke22', 'Hello', 19, 2, '2019-03-08 09:04:35'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 'benoke22', 'Aztaaa', 20, 5, '2019-03-09 12:28:03');
-
 -- --------------------------------------------------------
 
 --
@@ -187,16 +150,6 @@ CREATE TABLE `rendelesek` (
   `teljesitve` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- A tábla adatainak kiíratása `rendelesek`
---
-
-INSERT INTO `rendelesek` (`rendelesId`, `userId`, `termekId`, `rendelesIdopontja`, `teljesitve`) VALUES
-(1, 'dc9e4eb5-b022-45fa-b911-20560b3aeec3', 1, '2019-03-02 16:18:14', 1),
-(2, 'dc9e4eb5-b022-45fa-b911-20560b3aeec3', 3, '2019-03-02 16:19:13', 0),
-(1000000, 'dc9e4eb5-b022-45fa-b911-20560b3aeec3', 4, '2019-03-03 15:27:43', 0),
-(1000001, 'dc9e4eb5-b022-45fa-b911-20560b3aeec3', 4, '2019-03-08 18:33:00', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -212,19 +165,6 @@ CREATE TABLE `szemelyes_adatok` (
   `szuldatum` date DEFAULT NULL,
   `lakcim` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- A tábla adatainak kiíratása `szemelyes_adatok`
---
-
-INSERT INTO `szemelyes_adatok` (`userId`, `knev`, `vnev`, `nem`, `telszam`, `szuldatum`, `lakcim`) VALUES
-('7574a21b-416d-4462-8b42-7684926984b7', 'Kiss', 'BenÅ‘', 0, '007777722', '1995-02-02', 'Budapest'),
-('7f47fe6a-b642-4850-b529-bdba785745c1', 'Kiss', 'BenÅ‘', 0, '007777722', '1995-02-02', 'Budapest'),
-('80438ad4-5de3-413c-b0a3-cfc6d47054e0', 'Kiss', 'BenÅ‘', 0, '007777722', '1995-02-02', 'Budapest'),
-('8746ce53-cd88-46ab-9ca8-48cd6598a0b3', 'Kiss', 'BenÅ‘', 0, '007777722', '1995-02-02', 'Budapest'),
-('b4dbbd05-e33b-4eef-9d51-be7a2040e15e', 'Kiss', 'BenÅ‘', 0, '007777722', '1995-02-02', 'Budapest'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 'Kiss', 'BenÅ‘', 0, '007777722', '1995-02-02', 'Budapest'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 'Radován', 'Barnabás', 0, '306381864', '1996-03-17', 'Budapest');
 
 -- --------------------------------------------------------
 
@@ -288,27 +228,6 @@ CREATE TABLE `tornazok` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- A tábla adatainak kiíratása `tornazok`
---
-
-INSERT INTO `tornazok` (`userId`, `tornaId`, `nap`, `idopont`) VALUES
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 1, '2019-02-25', '15-16'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 2, '2019-02-25', '8-9'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 1, '2019-02-26', '10-11'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 1, '2019-02-28', '12-13'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 1, '2019-03-01', '13-14'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 3, '2019-03-02', '11-12'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 1, '2019-03-02', '14-15'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 1, '2019-03-02', '9-10'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 4, '2019-03-03', '12-13'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 2, '2019-03-06', '10-11'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 4, '2019-03-06', '11-12'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 3, '2019-03-06', '9-10'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 1, '2019-03-07', '11-12'),
-('f97b432f-a823-4a46-b86e-cffe3d26c62f', 2, '2019-03-10', '10-11'),
-('dc9e4eb5-b022-45fa-b911-20560b3aeec3', 1, '2019-03-10', '13-14');
-
---
 -- Indexek a kiírt táblákhoz
 --
 
@@ -316,7 +235,8 @@ INSERT INTO `tornazok` (`userId`, `tornaId`, `nap`, `idopont`) VALUES
 -- A tábla indexei `adminisztracio_adatok`
 --
 ALTER TABLE `adminisztracio_adatok`
-  ADD PRIMARY KEY (`userId`);
+  ADD PRIMARY KEY (`userId`),
+  ADD KEY `biztKerdes` (`biztKerdes`);
 
 --
 -- A tábla indexei `articles`
@@ -342,8 +262,7 @@ ALTER TABLE `biztonsagi_kerdesek`
 -- A tábla indexei `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`,`parentId`),
-  ADD KEY `parentId` (`parentId`);
+  ADD PRIMARY KEY (`comment_id`,`parentId`);
 
 --
 -- A tábla indexei `kepek`
@@ -406,13 +325,13 @@ ALTER TABLE `biztonsagi_kerdesek`
 -- AUTO_INCREMENT a táblához `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `rendelesek`
 --
 ALTER TABLE `rendelesek`
-  MODIFY `rendelesId` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000002;
+  MODIFY `rendelesId` int(36) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `termekek`

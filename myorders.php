@@ -8,6 +8,15 @@ if(isset($_GET['error']) && $_GET['error']=="sqlerror")
         </button>
     </div>';
 }
+if(isset($_GET['delete']) && $_GET['delete']=="success")
+{
+    echo '<div class="alert alert-success fade show">
+        <strong>Sikeres törlés!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>';
+}
 if(isset($_GET['order']) && $_GET['order']=="success")
 {
     echo '<div class="alert alert-success fade show">
