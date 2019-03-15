@@ -6,7 +6,7 @@
     $torol=mysqli_query($conn,$egy_kep_torol);
     if($torol)
     {
-        $file="images/$kepnev";
+        $file="../images/$kepnev";
         unlink($file);
         echo "A kép törölve lett";
         header('Location:../modify_article.php?id='.$id.'');
