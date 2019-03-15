@@ -1,9 +1,13 @@
 /*INCLUDES ALL THE BOOTSTRAP OVERWRITES AND CUSTOMIZATIONS*/
-/*@font-face {
+@font-face {
   font-family: Amatic;
   src: url("../fonts/AmaticSC-Regular.ttf");
   src: url("../fonts/Amatic-Bold.ttf");
-}*/
+}
+@font-face{
+  font-family: Andika;
+  src: url("../fonts/Andika.ttf");
+}
 body{
     margin-top: 56px;
     margin-bottom: 70px;
@@ -103,6 +107,10 @@ footer{
   /*font-family: Amatic;*/
   margin-top: 20px;
   box-shadow: 6px 7px 18px 4px rgba(71,43,28,0.75);
+}
+.customfont{
+  font-family: Amatic;
+  font-size: 2em;
 }
 .comment{
   margin-top: 20px;
