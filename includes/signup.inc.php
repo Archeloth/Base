@@ -44,7 +44,17 @@ if(isset($_POST['signup-submit']))
     $secterKey="6Ldt7pIUAAAAAIs9xTduD9pFe4BK4ph4aP3rcZQ1";
     $responseKey=$_POST['g-recaptcha-response'];
     $url="https://www.google.com/recaptcha/api/siteverify?secret=$secterKey&response=$responseKey";
-    $response=file_get_contents($url);
+    function curl_get_contents($url){
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return $data;
+    }
+    $response=curl_get_contents($url);
     $response=json_decode($response);
     if($response->success)
     {
@@ -69,6 +79,11 @@ if(isset($_POST['signup-submit']))
             header('Location: ../signup.php?error=invaliduser&mail='.$email);
             exit();
         }
+        else if(strlen($username)>50)
+        {
+            header('Location: ../signup.php?error=longuser&mail='.$email);
+            exit();
+        }
         else if(strlen($password)<8)
         {
             header('Location: ../signup.php?error=shortpassword&user='.$username.'&mail='.$email);
@@ -79,6 +94,31 @@ if(isset($_POST['signup-submit']))
             header('Location: ../signup.php?error=usernamepassword&user='.$username.'&mail='.$email);
             exit();
         }
+        else if(!preg_match("/\d/",$password))
+        {
+            header('Location: ../signup.php?error=nodigit&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if(!preg_match("/[A-Z]/",$password))
+        {
+            header('Location: ../signup.php?error=nocapital&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if(!preg_match("/[a-z]/",$password))
+        {
+            header('Location: ../signup.php?error=nosmall&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if(!preg_match("/[\W]/",$password))
+        {
+            header('Location: ../signup.php?error=nospecial&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if(preg_match("/[\s]/",$password))
+        {
+            header('Location: ../signup.php?error=nospace&user='.$username.'&mail='.$email);
+            exit();
+        }
         else if($password !== $passwordRepeat)
         {
             header('Location: ../signup.php?error=passwordcheck&user='.$username.'&mail='.$email);
@@ -87,6 +127,11 @@ if(isset($_POST['signup-submit']))
         else if(!preg_match("/^[1-9][0-9]{0,8}$/",$telefonszam))
         {
             header('Location: ../signup.php?error=wrongtelephone&user='.$username.'&mail='.$email);
+            exit();
+        }
+        else if(strlen($knev)>=255 || strlen($vnev)>=255 || strlen($lakcim)>=255)
+        {
+            header('Location: ../signup.php?error=longdata&user='.$username.'&mail='.$email);
             exit();
         }
         else
@@ -112,7 +157,7 @@ if(isset($_POST['signup-submit']))
                 }
                 else
                 {
-                    $sql="INSERT INTO bejelentkezo_adatok VALUES (?,?,?,?);";
+                    $sql="INSERT INTO bejelentkezo_adatok VALUES (?,?,?,?,?);";
                     $sql2="INSERT INTO szemelyes_adatok VALUES (?,?,?,?,?,?,?);";
                     $sql3="INSERT INTO adminisztracio_adatok (userId,adminE,aktivE,betegE,biztKerdes,biztValasz) VALUES (?,?,?,?,?,?);";
                     $stmt=mysqli_stmt_init($conn);
@@ -136,7 +181,8 @@ if(isset($_POST['signup-submit']))
                         $adminE=0;
                         $aktivE=1;
                         $betegE=1;
-                        mysqli_stmt_bind_param($stmt,"ssss",$uuid,$username,$email,$hashedPwd);
+                        $null_var=NULL;
+                        mysqli_stmt_bind_param($stmt,"sssss",$uuid,$username,$email,$hashedPwd,$null_var);
                         mysqli_stmt_bind_param($stmt2,"sssisss",$uuid,$knev,$vnev,$nem,$telefonszam,$szuletesdatum,$lakcim);
                         mysqli_stmt_bind_param($stmt3,"ssssis",$uuid,$adminE,$aktivE,$betegE,$biztkerd,$hashedBiztVal);
 
@@ -157,7 +203,7 @@ if(isset($_POST['signup-submit']))
     else
     {
         //ROBOT!!4
-        header('Location: ../signup.php?error=recaptchaerror');
+        header('Location: ../signup.php?error=recaptchaerror&'.$url);
         exit();
     }
 }

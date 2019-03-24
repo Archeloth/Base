@@ -17,8 +17,6 @@
     include 'includes/head.php';
 ?>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
     <title>Regisztráció</title>
 </head>
 <body>
@@ -64,7 +62,7 @@
             <div class="form-group row">
                 <label for="password" class="col-sm-2 col-form-label">*Jelszó:</label>
                 <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control" title="Legalább 8 karakter hosszú legyen! Ne eggyezzen meg a felhasználónévvel!">
+                    <input type="password" name="password" class="form-control" title="Legalább 8 karakter hosszú legyen! Tartalmazzon kis-, nagy betűt és számot, valamint speciális karaktert (pl: @&/\.). Ne eggyezzen meg a felhasználónévvel!">
                 </div>
             </div>
             <div class="form-group row">
@@ -153,5 +151,6 @@
         <a href="index.php">Vissza a főoldalra</a>
     </div>
     <?php include 'includes/footer.php'; ?>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

@@ -100,6 +100,62 @@ if(isset($_GET['error']))
                     </button>
                 </div>';
             break;
+        case "longuser":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>Túl hosszú a felhasználónév! Maximum 50 karakterlehet!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "nodigit":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A jelszavad nem tartalmaz számot!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "nocapital":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A jelszavad nem tartalmaz nagy betűt!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "nosmall":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A jelszavad nem tartalmaz kis betűt!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "nospecial":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A jelszavad nem tartalmaz speciális karaktert!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "nospace":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>A jelszavad nem tartalmazhat szóközt!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
+        case "longdata":
+            echo '<div class="alert alert-danger fade show">
+                    <strong>Az egyik adat túl hosszú! (keresztnév, vezetéknév, lakcím maximum 255 karaktert tartalmazhat)</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>';
+            break;
         default:
             break;
     }
