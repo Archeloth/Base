@@ -1,5 +1,4 @@
 <?php
-//TODO: username helyett id alapján legyenek tárolva
 
 $dt = new DateTime;
 if (isset($_GET['year']) && isset($_GET['week'])) {

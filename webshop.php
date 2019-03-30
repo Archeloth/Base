@@ -25,7 +25,6 @@ include 'includes/notifications.php';
                     {
                         echo '<tr>';
                         echo '<td><img id="imagesource" src="images/'.$row['kep'].'" height="100" onClick="Scale(this)"></td>';
-                        //Lehetne image-modallal is csinálni a nagyítást
                         echo '<td>'.$row['megnevezes'].'</td>';
                         echo '<td>'.$row['nettoAr'].'</td>';
                         if($row['raktaron']>0)

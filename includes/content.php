@@ -3,10 +3,8 @@
 
 <div class="row">
 
-  <!-- Blog Entries Column -->
+  <!-- Blog Entries Column, ehhez fűződnek hozzá a cikkek -->
   <div class="col-md-8">
-
-    <?php //echo $_SESSION['knev'].' '.$_SESSION['vnev']; ?>
     <h1 class="my-4">Gyógytorna
       <small>mindenkinek...</small>
     </h1>

@@ -4,10 +4,9 @@ if(isset($_POST['submit']))
 {
     include_once "connection.php";
     $id=$_GET['id'];
-    //echo 'A feltöltendő cikk id-ja az ez: '.$id;
     $celmappa='../images/';
     $idobelyeg=date('YmdGis');
-    $file_name="artic_".$id."_".$idobelyeg.".jpg";//Az új cikkeknél esetleg lehetne más fájlnév, ami nem tartalmazza az id-t hanem valami mást
+    $file_name="artic_".$id."_".$idobelyeg.".jpg";
     $tmp_dir=$_FILES['file']['tmp_name'];
 
     if(!preg_match('/(jpg)$/i',$file_name))

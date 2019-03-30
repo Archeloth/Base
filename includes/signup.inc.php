@@ -203,7 +203,7 @@ if(isset($_POST['signup-submit']))
     else
     {
         //ROBOT!!4
-        header('Location: ../signup.php?error=recaptchaerror&'.$url);
+        header('Location: ../signup.php?error=recaptchaerror');
         exit();
     }
 }

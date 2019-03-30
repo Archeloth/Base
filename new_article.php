@@ -23,7 +23,6 @@
             <button type="submit" name="submit-new" class="btn btn-success">Elfogad</button>
             <button type="reset" class="btn btn-warning">Visszaállít</button>
         </form>
-        <?php //EZ még kérdéses, hogy hogyan kapcsoljam össze a még nem létező cikkel a képet... include_once "upload_image_form.php" image_upload()?>
         <a href="index.php">Vissza a főlapra</a>
     </div>
 </div>

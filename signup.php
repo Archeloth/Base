@@ -107,14 +107,7 @@
                 <div class="col-sm-10">
                     <input type="text" name="lakcim" class="form-control" placeholder="Lakcím">
                 </div>
-            </div><!--Csak az admin felhasználó létrehozásához
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" name="admin">
-                <label class="form-check-label" for="defaultCheck1">
-                    Admin?
-                </label>
             </div>
-            -->
             <p>Biztonsági kérdés kiválasztása a jövőbeli jelszó módosításhoz és azonosításhoz.</p>
             <div class="form-group row">
                 <label for="biztkerdes" class="col-sm-2 col-form-label">*Kérdés:</label>

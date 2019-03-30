@@ -75,7 +75,6 @@ function processNewComment($article_id)
     //Ha megnyomták a kommentelési gombot és nem üres a textfield, akkor felvesszük az adatbázisban
     if(isset($_POST['submit-comment']) && !empty($_POST['comment']) )
     {
-        //echo '<script>alert("Bent vagyok");</script>';
         include 'includes/connection.php';
         $comment=$_POST['comment'];
         
@@ -93,7 +92,6 @@ function processNewComment($article_id)
         {
             mysqli_stmt_bind_param($stmt, "sssi", $userid,$username,$comment,$id);
             mysqli_stmt_execute($stmt);
-            //echo "Sikeres adatfelvitel";
             mysqli_stmt_close($stmt);
             mysqli_close($conn);
             

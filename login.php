@@ -20,7 +20,7 @@ include "includes/head.php"; ?>
                 <a href="index.php">Vissza a főoldalra</a>
             </div>
             <div class="col">
-                <!--<a href="forgot_pwd.php">Elfelejtette jelszavát?</a>-->
+                <!--<a href="#">Elfelejtette jelszavát?</a>-->
             </div>
         </div>
     </div>
