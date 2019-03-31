@@ -32,7 +32,7 @@ if(isset($_GET['error']))
             break;
         case "invaliduser":
             echo '<div class="alert alert-danger fade show">
-                    <strong>Hibás felhasználónév. Kérlek csak az angol abc karaktereit, és számokat használj!</strong>
+                    <strong>Hibás felhasználónév.</strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
