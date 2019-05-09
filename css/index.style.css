@@ -15,6 +15,7 @@ body{
 }
 .navbar{
     background-color: #b6244f !important;
+    font-weight: bold !important;
   }
   .navbar .navbar-toggler{
     background-color: #fbb7c0;
@@ -27,10 +28,11 @@ body{
   }
   .navbar .navbar-brand:hover,
   .navbar .navbar-brand:focus {
-    color: #fbb7c0;
+    color: #ffffff;
   }
   .navbar .navbar-text {
     color: #fbb7c0;
+    
   }
   .navbar .navbar-text a {
     color: #fbb7c0;
@@ -71,7 +73,7 @@ body{
   .navbar .navbar-nav .nav-item.show .nav-link:hover,
   .navbar .navbar-nav .nav-item.show .nav-link:focus {
     color: #fbb7c0;
-    background-color: #a22147;
+    background-color: #a54360;
   }
   .navbar .navbar-toggle {
     border-color: #ee6d94;
@@ -108,14 +110,98 @@ footer{
   margin-top: 20px;
   box-shadow: 6px 7px 18px 4px rgba(71,43,28,0.75);
 }
-.customfont{
-  font-family: Amatic;
-  font-size: 2em;
-}
 .comment{
   margin-top: 20px;
 }
 #commenting{
   resize: none;
   margin-top: 20px;
+}
+button {
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: #a22147;
+}
+
+button {
+  z-index: 1;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: #a22147;
+}
+
+button:hover {
+  cursor: pointer;
+  animation: jelly 0.5s linear;
+}
+
+@keyframes jelly {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+a {
+  position: relative;
+  text-decoration: none !important;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+  color: white !important;
+}
+
+a::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fc2f70;
+  transform-origin: center;
+  transform: translate(-50%, 0) scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+a:hover::before {
+  transform: translate(-50%, 0) scaleX(1);
+}
+
+.fixed{
+  position: fixed;
+  right: 2vw;
+}
+@media screen and (max-width: 900px ){
+  .fixed{
+    position: static;
+    display: flex;
+    flex-direction: column;
+    order: 1;
+  }
+}
+.profile-items{
+  list-style: none;
+}
+footer{
+  z-index: 1;
 }

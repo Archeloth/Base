@@ -10,7 +10,7 @@ echo '<title>'.$_SESSION['userName'].'</title>';
     <div class="container py-5">
         <div class="offset-sm-2 col-sm-8">
             <h2>Üdv a profilodon</h2>
-            <ul>
+            <ul class="profile-items">
                 <li><a href="info_update.php"><button class="btn btn-secondary form-control">Személyes adatok módosítása</button></a></li>
                 <li><a href="forgot_pwd.php"><button class="btn btn-secondary form-control">Jelszó módosítás</button></a></li>
                 <li><a href="change_username.php"><button class="btn btn-secondary form-control">Felhasználónév módosítása</button></a></li>

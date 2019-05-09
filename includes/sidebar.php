@@ -1,5 +1,5 @@
 <!-- Sidebar Widgets Column -->
-<div class="col-md-4">
+<div class="column col-md-4 mt-2 fixed">
 
 <!-- Search Widget -->
 <div class="card my-4 mycard">
@@ -8,7 +8,7 @@
   <form action="index.php" method="GET">
     <div class="input-group">
       <input type="text" name="search" class="form-control" placeholder="...">
-      <button type="submit" class="btn btn-primary" name="keres-submit">Keres</button>
+      <button type="submit" class="btn btn-primary ml-2" name="keres-submit">Keres</button>
     </div>
   </form>
   </div>
@@ -18,7 +18,7 @@
 <!-- Kategóriák szerint lehet listázni, a linkekre kattintva a kereső funkció indul el-->
 <div class="card my-4 mycard">
   <h5 class="card-header">Kategóriák</h5>
-  <div class="card-body">
+  <div class="card-body d-flex justify-content-center">
     
         <ul class="list-unstyled mb-0">
         <?php

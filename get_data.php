@@ -16,7 +16,7 @@ session_start();
           //echo '<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">';
           echo '<div class="card-body">';
           echo '<h2 class="card-title">'. $row['title'].'</h2>';
-          echo '<p class="card-text article customfont">'.$row['content'].'</p>';
+          echo '<p class="card-text article">'.$row['content'].'</p>';
           echo '</div>';
           echo '<div class="card-footer text-muted">';
           echo 'Létrehozva '.$row['created'];

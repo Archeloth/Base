@@ -18,7 +18,7 @@
             </div>
         </div>
         
-        <div class="offset-sm-3 col-sm-6">
+        <div class="offset-sm-2 col-sm-8 pt-5">
            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas facilisis lacus vel efficitur dignissim. In sollicitudin rutrum nulla, eu suscipit felis volutpat in. Quisque velit odio, tincidunt dictum lorem ut, congue consequat massa. Suspendisse bibendum interdum nibh vitae pharetra. Nam nisi odio, fringilla at facilisis ac, egestas non arcu. Suspendisse commodo sem ac congue eleifend. Fusce sed eros ornare, efficitur ante eu, lobortis purus. Nunc gravida blandit magna ut tempor. Pellentesque at nunc cursus, tincidunt orci ac, finibus enim.</p>
 
             <p>Fusce vehicula metus id purus tincidunt, quis lobortis mi pulvinar. Nam vehicula, libero at aliquet pulvinar, ligula erat faucibus velit, vitae vehicula quam enim ac urna. Quisque tincidunt elementum quam, sit amet faucibus nibh finibus eget. Morbi tempus rhoncus nibh, vitae malesuada magna viverra non. Sed dictum turpis tortor, at fermentum nisl dictum sollicitudin. Cras dictum pharetra mauris et hendrerit. Aenean ultricies eros a risus consequat vehicula. Fusce eleifend gravida velit eget condimentum. Aliquam sapien ipsum, porttitor bibendum semper et, venenatis id nisl. Morbi a urna sed quam congue dapibus. Vivamus faucibus tellus laoreet hendrerit maximus. Suspendisse vel vestibulum felis. Nam turpis massa, porttitor congue ipsum a, tristique vestibulum justo.</p>
