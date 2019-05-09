@@ -178,7 +178,7 @@ if(isset($_POST['signup-submit']))
                         //PASSWORD_DEFAULT - Use the bcrypt algorithm (default as of PHP 5.5.0). Note that this constant is designed to change over time as new and stronger algorithms are added to PHP. For that reason, the length of the result from using this identifier can change over time. Therefore, it is recommended to store the result in a database column that can expand beyond 60 characters (255 characters would be a good choice).
 
                         $uuid=gen_uuid();
-                        $adminE=0;
+                        $adminE=0;//Ezeket módosítsd az admin létrehozásakor
                         $aktivE=1;
                         $betegE=1;
                         $null_var=NULL;

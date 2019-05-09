@@ -138,7 +138,6 @@
                 <div class="g-recaptcha" data-sitekey="6Ldt7pIUAAAAANKJPDuwjmpujXwqAdaXNtNe0TG1"></div>
             </div>
             
-
             <button type="submit" class="btn btn-success form-control" name="signup-submit">Regisztrálás</button>
         </form>
         <a href="index.php">Vissza a főoldalra</a>
