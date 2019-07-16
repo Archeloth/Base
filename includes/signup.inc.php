@@ -41,7 +41,7 @@ if(isset($_POST['signup-submit']))
     //Captcha cuccok
     //https://www.google.com/recaptcha/admin/site/345173613/setup
     //Lehetne IP-t is továbbküldeni, de azt inkább nem...
-    $secterKey="6Ldt7pIUAAAAAIs9xTduD9pFe4BK4ph4aP3rcZQ1";
+    $secterKey="YOURSECRETKEY";
     $responseKey=$_POST['g-recaptcha-response'];
     $url="https://www.google.com/recaptcha/api/siteverify?secret=$secterKey&response=$responseKey";
     function curl_get_contents($url){
